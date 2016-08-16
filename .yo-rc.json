@@ -1,0 +1,8 @@
+{
+  "generator-react-webpack": {
+    "appName": "reactMedium",
+    "style": "less",
+    "postcss": true,
+    "generatedWithVersion": 3
+  }
+}
