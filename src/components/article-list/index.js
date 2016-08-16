@@ -13,6 +13,17 @@ class ArticleList extends React.Component {
 	        	<GridArticle />
 		      	<GridArticle />
 		      	<GridKeyArticle />
+		      	<GridKeyArticle />
+		      	<GridArticle />
+		      	<GridArticle />
+		      	<GridArticle />
+		      	<GridArticle />
+		      	<GridArticle />
+		      	<GridKeyArticle />
+		      	<GridArticle />
+		      	<GridArticle />
+		      	<GridArticle />
+		      	<GridKeyArticle />
         	</div>
         );
     }

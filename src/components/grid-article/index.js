@@ -1,12 +1,14 @@
 'use strict';
 
 import React from 'react';
+import { Router, Route, Link } from 'react-router';
 
 require('./index.less');
 
 class GridArticle extends React.Component {
     render() {
-        return ( < div className = "com-grid-article clearfix" >
+        return ( 
+        	<Link to="/articles/1" className="com-grid-article clearfix" >
 	           	<div className="grid-article-left">
 	           		<h2>生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞,生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞.</h2>
 	           		<div className="ribbon">
@@ -17,9 +19,9 @@ class GridArticle extends React.Component {
 	           		</div>
 	           	</div>
 	           	<div className="grid-article-right">
-	           		<img src={'../../images/yeoman.png'} className="imgcover"/>
+	           		<img src={'/images/grid-article-banner.jpg'} className="imgcover"/>
 	           	</div>
-            </div>
+            </Link>
         );
     }
 }

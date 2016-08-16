@@ -6,12 +6,12 @@ require('./index.less');
 
 class GridKeyArticle extends React.Component {
     render() {
-        return ( < div className = "com-grid-key-article clearfix" >
+        return ( 
+        	<div className="com-grid-key-article clearfix" >
 	           	<div className="grid-key-article-head imgcover">
-	           		<img src={'../../images/yeoman.png'} />
+	           		<img src={'/images/grid-key-article-banner.jpg'} />
 	           	</div>
 	           	<div className="grid-key-article-body">
-	           		
 	           		<h2>在无尽的旅程上，把电影写成诗的贾木许也是你让你永远忘不掉的贾木许.是你让你永远忘不掉的贾木许是你让你永远忘不掉的贾木许</h2>
 	           		<div className="ribbon">
 	           		<span>片刻</span>
