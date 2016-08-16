@@ -1,0 +1,24 @@
+/* Base Application Styles */
+@import url('../components/common/index.less');
+body {
+  color: #fff;
+  background: #222;
+}
+*,
+*:before,
+*:after{
+  box-sizing: border-box;
+}
+.index{
+  background-color: #f3f3f3;
+  .com-grid-article,
+  .com-grid-key-article{
+    .margin-top(5);
+  }
+  .com-grid-article{
+    .height(240);
+  }
+  .com-grid-key-article{
+    .height(500);
+  }
+}

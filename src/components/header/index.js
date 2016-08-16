@@ -7,10 +7,8 @@ require('./index.less');
 class Header extends React.Component {
     render() {
         return ( < div className = "com-header" >
-	            < span className = "iconfont icon-menu" > < /span>
-	            < span className = "iconfont icon-logo" > < /span> 
-	            < span className="login"> Login < /span>
-            </div>
+            < span className = "iconfont icon-menu" > < /span> < span className = "iconfont icon-logo" > < /span>  < span className = "login" > Login < /span> 
+            < /div>
         );
     }
 }
