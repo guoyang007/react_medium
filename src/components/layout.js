@@ -3,7 +3,6 @@ require('./layout.less');
 
 import React from 'react';
 import Header from './header/index.js';
-import SideMenu from './side-menu/index.js';
 import ArticleList from './article-list/index.js'
 
 class Layout extends React.Component {
@@ -12,6 +11,7 @@ class Layout extends React.Component {
       <div className="index">
       	<Header />
         <ArticleList />
+        
       	{this.props.children}
       </div>
     );
