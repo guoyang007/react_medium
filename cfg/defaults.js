@@ -58,7 +58,7 @@ function getDefaultModules() {
 
 module.exports = {
   srcPath: srcPath,
-  publicPath: '/assets/',
+  publicPath: '/react_medium/dist/assets/',
   port: dfltPort,
   getDefaultModules: getDefaultModules
 };
