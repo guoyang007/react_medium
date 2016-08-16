@@ -12,7 +12,7 @@ class GridKeyArticle extends React.Component {
 	           	</div>
 	           	<div className="grid-key-article-body">
 	           		
-	           		<h2>在无尽的旅程上，把电影写成诗的贾木许也 是你让你永远忘不掉的贾木许</h2>
+	           		<h2>在无尽的旅程上，把电影写成诗的贾木许也是你让你永远忘不掉的贾木许.是你让你永远忘不掉的贾木许是你让你永远忘不掉的贾木许</h2>
 	           		<div className="ribbon">
 	           		<span>片刻</span>
 	           		<span className="iconfont icon-heart">122</span>

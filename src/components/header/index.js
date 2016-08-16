@@ -11,10 +11,10 @@ class Header extends React.Component {
         	<div className="com-header">
 				<SideMenu />
 
-            	<span className="iconfont icon-menu"></span> 
+            	<span className="iconfont icon-menu"></span>
 
-            	<span className="iconfont icon-logo"></span>  
-            	<span className = "login">Login</span> 
+            	<span className="iconfont icon-logo"></span>
+            	<span className = "login">Login</span>
             </div>
         );
     }

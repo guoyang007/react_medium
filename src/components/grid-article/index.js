@@ -8,7 +8,7 @@ class GridArticle extends React.Component {
     render() {
         return ( < div className = "com-grid-article clearfix" >
 	           	<div className="grid-article-left">
-	           		<h2>生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞</h2>
+	           		<h2>生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞,生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞.</h2>
 	           		<div className="ribbon">
 	           		<span>片刻</span>
 	           		<span className="iconfont icon-heart">122</span>
