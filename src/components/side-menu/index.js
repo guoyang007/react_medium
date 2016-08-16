@@ -1,13 +1,19 @@
 'use strict';
 
 import React from 'react';
+import { push as Menu } from 'react-burger-menu'
 
 require('./index.less');
 
 class SideMenu extends React.Component {
     render() {
         return (
-        	<div className="com-side-menu">SideMenu</div>
+    		<Menu className="com-side-menu">
+		        <a className="menu-item" href="/">Home</a>
+		        <a className="menu-item" href="/about">About</a>
+		        <a className="menu-item" href="/contact">Contact</a>
+		        <a className="menu-item--small" href="">Settings</a>
+		    </Menu>
         );
     }
 }

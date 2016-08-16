@@ -7,8 +7,8 @@ require('./index.less');
 class GridKeyArticle extends React.Component {
     render() {
         return ( < div className = "com-grid-key-article clearfix" >
-	           	<div className="grid-key-article-head">
-	           		<img src={'../../images/yeoman.png'} className="imgcover"/>
+	           	<div className="grid-key-article-head imgcover">
+	           		<img src={'../../images/yeoman.png'} />
 	           	</div>
 	           	<div className="grid-key-article-body">
 	           		
