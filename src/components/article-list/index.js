@@ -1,13 +1,19 @@
 'use strict';
 
 import React from 'react';
+import GridArticle from 'components/grid-article/index.js'
+import GridKeyArticle from 'components/grid-key-article/index.js'
 
 require('./index.less');
 
 class ArticleList extends React.Component {
     render() {
         return (
-        	<div className="com-article-list">ArticleList</div>
+        	<div className="com-article-list">
+	        	<GridArticle />
+		      	<GridArticle />
+		      	<GridKeyArticle />
+        	</div>
         );
     }
 }

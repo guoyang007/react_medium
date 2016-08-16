@@ -11,8 +11,7 @@ class Layout extends React.Component {
     return (
       <div className="index">
       	<Header />
-      	<SideMenu />
-        
+
       	{this.props.children}
       </div>
     );
