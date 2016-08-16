@@ -19,15 +19,18 @@ class Header extends React.Component {
 
     onOpenChange() {
         this.setState({open: !this.state.open});
-        
+
         console.log(this.state.open);
     }
 
     render() {
         const sidebar = (
             <ul>
-                <li>首页</li>
-                <li>文章详情页</li>
+                <li className="cur">精选</li>
+                <li>科技</li>
+                <li>娱乐</li>
+                <li>商业</li>
+                <li>汽车</li>
             </ul>
         );
 
@@ -39,11 +42,13 @@ class Header extends React.Component {
 
         return (
         	<div className="com-header">
-            	<span className="iconfont icon-menu" onClick={this.onOpenChange.bind(this)}></span>
-            	<span className="iconfont icon-logo"></span>
-            	<span className="login">Login</span>
+                <div className="header-bd">
+                    <span className="iconfont icon-menu" onClick={this.onOpenChange.bind(this)}></span>
+                    <span className="iconfont icon-logo"></span>
+                    <span className="login">Login</span>
+                </div>
 
-                <div className="drawer-container">
+                <div className="header-ft">
                     <Drawer sidebar={sidebar} dragHandleStyle={{ display: 'none' }} {...drawerProps}>抽屉</Drawer>
                 </div>
             </div>
