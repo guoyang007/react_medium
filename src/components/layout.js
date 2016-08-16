@@ -4,6 +4,8 @@ require('./layout.less');
 import React from 'react';
 import Header from './header/index.js';
 import SideMenu from './side-menu/index.js';
+import GridArticle from './grid-article/index.js';
+import GridKeyArticle from './grid-key-article/index.js';
 
 
 class Layout extends React.Component {
@@ -11,7 +13,8 @@ class Layout extends React.Component {
     return (
       <div className="index">
       	<Header />
-
+      	<GridArticle />
+      	<GridKeyArticle />
       	{this.props.children}
       </div>
     );
