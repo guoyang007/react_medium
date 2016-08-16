@@ -70,7 +70,10 @@
     "history": "^3.0.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
+    "react-burger-menu": "^1.10.4",
     "react-dom": "^15.0.0",
+    "react-motion": "^0.4.4",
+    "react-motion-drawer": "^3.0.0",
     "react-router": "^2.6.1"
   }
 }
