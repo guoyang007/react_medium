@@ -5,13 +5,14 @@ import React from 'react';
 require('./index.less');
 
 class Header extends React.Component {
-  render() {
-    return (
-      <div className="com-header">
-        Please edit src/components///Header.js to update this component!
-      </div>
-    );
-  }
+    render() {
+        return ( < div className = "com-header" >
+	            < span className = "iconfont icon-menu" > < /span>
+	            < span className = "iconfont icon-logo" > < /span> 
+	            < span className="login"> Login < /span>
+            </div>
+        );
+    }
 }
 
 Header.displayName = 'Header';
