@@ -1,10 +1,14 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 import Layout from 'components/layout.js';
 import ArticleList from './components/article-list/index.js';
 import ArticleDetail from './components/article-detail/index.js';
+
+
+injectTapEventPlugin();
 
 // Render the main component into the dom
 ReactDOM.render((

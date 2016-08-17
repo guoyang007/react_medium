@@ -1,7 +1,6 @@
 /* Base Application Styles */
 
 @import './common/variables.less';
-
 body {
     color: #fff;
     background: #222;
@@ -51,26 +50,25 @@ body {
             padding-right: 22px;
         }
     }
-    .header-ft {
-        position: relative;
-        height: 1000px;
-        .am-drawer-sidebar {
-            background-color: #000;
-            .width(152);
-            ul {
-                li {
-                    .font-size(26);
-                    .line-height(140);
-                    color: rgba(255, 255, 255, 0.3);
-                    &.cur {
-                        .font-size(30);
-                        color: rgba(255, 255, 255, 1);
-                    }
+}
+
+.com-drawer {
+    position: relative;
+    .drawer-bd {
+        padding-top: 40px;
+        background-color: #000 !important;
+        width: 76px !important;
+        ul {
+            li {
+                font-size: 13px;
+                line-height: 70px;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.3);
+                &.cur {
+                    font-size: 15px;
+                    color: rgba(255, 255, 255, 1);
                 }
             }
-        }
-        .am-drawer-content{
-          background-color: #f3f3f3;
         }
     }
 }
