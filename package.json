@@ -48,22 +48,23 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
+    "less": "^2.5.3",
+    "less-loader": "^2.0.0",
     "minimist": "^1.2.0",
     "mocha": "^2.2.5",
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.0.0",
+    "postcss": "^5.0.11",
+    "postcss-loader": "^0.8.0",
     "react-addons-test-utils": "^15.0.0",
     "react-hot-loader": "^1.2.9",
+    "redux-devtools": "^3.3.1",
     "rimraf": "^2.4.3",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.0",
-    "webpack-dev-server": "^1.12.0",
-    "less-loader": "^2.0.0",
-    "less": "^2.5.3",
-    "postcss": "^5.0.11",
-    "postcss-loader": "^0.8.0"
+    "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
     "antd-mobile": "^0.7.7",
@@ -74,7 +75,10 @@
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-mdl": "^1.6.1",
+    "react-redux": "^4.4.5",
+    "react-refetch": "^1.0.0-beta.8",
     "react-router": "^2.6.1",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.5.2"
   }
 }
