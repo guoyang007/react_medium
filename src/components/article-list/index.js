@@ -1,15 +1,66 @@
 'use strict';
 
 import React from 'react';
-import GridArticle from 'components/grid-article/index.js'
-import GridKeyArticle from 'components/grid-key-article/index.js'
+import GridArticle from 'components/grid-article/index.js';
+import GridKeyArticle from 'components/grid-key-article/index.js';
+import 'antd-mobile/lib/refresh-control/style';
+import { RefreshControl } from 'antd-mobile/lib/refresh-control';
 
 require('./index.less');
-
+let count = 1;
 class ArticleList extends React.Component {
+
+	constructor(props) {
+        super(props);
+
+        this.state = {
+            items: [
+	        <div key={`item-${count}`} style={{ height: 70 }}>条目 {count++}</div>
+	      ]
+        }
+    }
+
+	  loadingFunction() {
+	    return new Promise((resolve, reject) => {
+	      setTimeout(() => {
+	        if (this.addItem()) {
+	          resolve();
+	        } else {
+	          reject();
+	        }
+	      }, 500);
+	    });
+	  }
+
+	  addItem() {
+	    this.state.items.push(<div key={`item-${count}`} style={{ height: 70 }}>条目 {count++}</div>);
+	    this.setState({
+	      items: this.state.items
+	    });
+	    return true;
+	  }
+
     render() {
         return (
-        	<div className="com-article-list">
+        	<RefreshControl
+        		loadingFunction={this.loadingFunction.bind(this)}
+        		distanceToRefresh={60}
+        		resistance={1}
+        		style={{
+        			position:'relative',
+        			paddingTop:20,
+        			textAlign:'center'
+        		}}
+        		hammerOptions={{
+        			touchAction:'auto',
+        			recognizers:{
+        				pan:{
+        					threshold:100
+        				}
+        			}
+        		}}
+        	>
+        		<div>{this.state.items}</div>
 	        	<GridArticle />
 		      	<GridArticle />
 		      	<GridKeyArticle />
@@ -24,7 +75,7 @@ class ArticleList extends React.Component {
 		      	<GridArticle />
 		      	<GridArticle />
 		      	<GridKeyArticle />
-        	</div>
+        	</RefreshControl>
         );
     }
 }
