@@ -59,6 +59,7 @@
     "postcss-loader": "^0.8.0",
     "react-addons-test-utils": "^15.0.0",
     "react-hot-loader": "^1.2.9",
+    "redux-devtools": "^3.3.1",
     "rimraf": "^2.4.3",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
@@ -68,13 +69,17 @@
   "dependencies": {
     "antd-mobile": "^0.7.8",
     "core-js": "^2.0.0",
-    "history": "^3.0.0",
+    "halogen": "^0.2.0",
+    "history": "^2.0.0",
     "material-ui": "^0.15.4",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-mdl": "^1.6.1",
+    "react-redux": "^4.4.5",
+    "react-refetch": "^1.0.0-beta.8",
     "react-router": "^2.6.1",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.5.2"
   }
 }
