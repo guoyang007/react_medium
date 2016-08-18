@@ -2,8 +2,7 @@ import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { Router, Route, Link, IndexRoute } from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory'
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import { createStore } from 'redux';
 import mediumApp from './reducers/drawer.js';
@@ -18,7 +17,7 @@ injectTapEventPlugin();
 
 // Render the main component into the dom
 ReactDOM.render((
-	<Router history={createBrowserHistory()}>
+	<Router history={browserHistory}>
 		<Route path="/" component={Layout}>
 			<IndexRoute component={ArticleList} />
 			
