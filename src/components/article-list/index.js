@@ -3,8 +3,7 @@
 import React from 'react';
 
 import 'antd-mobile/lib/refresh-control/style';
-import { RefreshControl } from 'antd-mobile/lib/refresh-control';
-
+import RefreshControl from 'antd-mobile/lib/refresh-control';
 import { connect } from 'react-refetch'
 
 import Loading from 'components/loading/index.js'
@@ -13,45 +12,27 @@ import GridKeyArticle from 'components/grid-key-article/index.js'
 
 
 require('./index.less');
-let count = 1;
+
 class ArticleList extends React.Component {
 
-	constructor(props) {
-        super(props);
+    refresh(){
+        let { articlesFetch } = this.props;
 
-        this.state = {
-            items: [
-	        <div key={`item-${count}`} style={{ height: 70 }}>条目 {count++}</div>
-	      ]
-        }
+        return new Promise((resolve, reject) => {
+            if(articlesFetch.rejected){
+                reject();
+            }else if(articlesFetch.fulfilled){
+                resolve();
+            }
+        });
     }
 
-	  loadingFunction() {
-	    return new Promise((resolve, reject) => {
-	      setTimeout(() => {
-	        if (this.addItem()) {
-	          resolve();
-	        } else {
-	          reject();
-	        }
-	      }, 500);
-	    });
-	  }
-
-	  addItem() {
-	    this.state.items.push(<div key={`item-${count}`} style={{ height: 70 }}>条目 {count++}</div>);
-	    this.setState({
-	      items: this.state.items
-	    });
-	    return true;
-	  }
 
     render() {
-
     	let { articlesFetch } = this.props,
             articleNodes = [];
 
-    	if (articlesFetch.pending) {
+        if (articlesFetch.pending) {
     		return (<Loading />);
     	} else if (articlesFetch.rejected) {
     		return (<Loading />);
@@ -65,34 +46,17 @@ class ArticleList extends React.Component {
             });
 
             articleNodes.push(<Loading key={articlesFetch.value.length} />);
-    	}  
+    	}
 
     	return (
             <RefreshControl
-                loadingFunction={this.loadingFunction.bind(this)}
-                distanceToRefresh={60}
-                resistance={1}
-                style={{
-                    position:'relative',
-                    paddingTop:20,
-                    textAlign:'center'
-                }}
-                hammerOptions={{
-                    touchAction:'auto',
-                    recognizers:{
-                        pan:{
-                            threshold:100
-                        }
-                    }
-                }}
+                loadingFunction={this.refresh.bind(this)}
             >
-            <div>{this.state.items}</div>
-        	<div className="com-article-list">
-        		{articleNodes}
-        	</div>
+                <div className="com-article-list">
+                    {articleNodes}
+                </div>
             </RefreshControl>
-        );      
-
+        );
     }
 }
 
@@ -101,6 +65,15 @@ ArticleList.displayName = 'ArticleList';
 ArticleList.propTypes = {};
 ArticleList.defaultProps = {};
 
-export default connect(props => ({
-	articlesFetch: `/interfaces/articles.json`
-}))(ArticleList);
+export default connect(props => {
+    return {
+        articlesFetch: `/interfaces/articles.json`,
+        refreshArticles: () => ({
+            articlesFetch: {
+                url: `/interfaces/articles2.json`,
+                force: true,
+                refreshing: true
+            }
+        })
+    }
+})(ArticleList);
