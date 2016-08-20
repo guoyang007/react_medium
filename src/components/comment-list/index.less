@@ -1,0 +1,21 @@
+@import url('../common/index.less');
+.com-comment-list{
+	width: 100%;
+	.com-comment{
+		position: relative;
+		&:nth-child(n+2){
+			&:before{
+				position: absolute;
+				top: 0;
+				right: 0;
+				content: "";
+				width:93%;
+				height: 1px;
+				background-color: #e0e0e0;
+				transform:scaleY(0.5);
+
+			}
+		}
+		
+	}
+}

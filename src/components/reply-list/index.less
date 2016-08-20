@@ -1,0 +1,41 @@
+@import '../common/variables.less';
+
+.com-reply {
+    padding-top: 20px;
+    .reply-left {
+        float: left;
+    }
+    .reply-right {
+        position: relative;
+        float: right;
+        .width(400);
+        .name-date {
+            .name {
+                display: block;
+                font-size: 18px;
+                height: 18px;
+                line-height: 18px;
+                color: #000000;
+            }
+            .date {
+                display: block;
+                margin-top: 10px;
+                font-size: 12px;
+                height: 12px;
+                line-height: 12px;
+                color: #aaaaaa;
+            }
+        }
+        .reply-text {
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .replies {
+            margin-top: 20px;
+        }
+    }
+    &:last-child {
+        padding-bottom: 0;
+    }
+}

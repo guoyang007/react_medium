@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-refetch'
 
 import Loading from 'components/loading/index.js'
+import RelatedComments from 'components/related-comments/index'
 
 require('./index.less');
 
@@ -39,6 +40,7 @@ class ArticleDetail extends React.Component {
                             {tagNodes}
                         </ul>
                     </div>
+                    <RelatedComments/>
                 </div>
             );
         }
