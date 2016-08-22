@@ -1,41 +1,37 @@
 'use strict'
 
 import React from 'react'
+import ReplyList from '../reply-list/index.js';
 
 require('./index.less');
-
-const createFragment=require("react-addons-create-fragment");
 
 class Comment extends React.Component{
 
 
 	render(){
 			
-			const datas=this.props.data;
-
-			const data=createFragment(datas)
-			console.log(data);
-
+			const {comment}=this.props;
 
 			return(
 				<div className="com-comment">
 					<div className="comment-left">
 						<figure className="avatar">
-							<img src={data.author.avatar} />
+							<img src={comment.author.avatar} />
 						</figure>
 					</div>
 					<div className="comment-right">
 						<div className="name-date">
-							<a href="javascript:void(0);" className="name">{data.author.name}</a>
-							<span className="date smart-date" data-originDate={data.publish_date}></span>
+							<a href="javascript:void(0);" className="name">{comment.author.name}</a>
+							<span className="date smart-date" data-originDate={comment.publish_date}></span>
 							<div className="ribbon">
-								<span className="iconfont icon-heart">{data.praise_count}</span>
-								<span className="iconfont icon-message">{data.message_count}</span>
+								<span className="iconfont icon-heart">{comment.praise_count}</span>
+								<span className="iconfont icon-message">{comment.message_count}</span>
 							</div>
 						</div>
-						<p className="comment-text">{data.content}</p>
-						{(data.child_comments.length)
-							?<span>{data.child_comments}</span>							:null
+						<p className="comment-text">{comment.content}</p>
+						{(comment.child_comments.length)
+							?<ReplyList replyList={comment.child_comments} />							
+							:null
 						}
 					</div>
 				</div>

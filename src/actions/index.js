@@ -30,11 +30,6 @@ export function fetchArticle(articleId = 1) {
 }
 
 
-
-
-
-
-
 // fetch-articles
 export const REQUEST_ARTICLES = 'REQUEST_ARTICLES'
 function requestArticles(page) {
@@ -61,4 +56,31 @@ export function fetchArticles(page = 1) {
             .then(response => response.json())
             .then(json => dispatch(receiveArticles(page, json)))
     }
+}
+
+//fetch-comments
+export const REQUEST_COMMENTS='REQUEST_COMMENTS'
+function requestComments(page){
+    return{
+        type:REQUEST_COMMENTS,
+        page:page
+    }
+}
+export const RECEIVE_COMMENTS='RECEIVE_COMMENTS'
+function receiveComments(page,json){
+    return{
+        type:REQUEST_COMMENTS,
+        page:page,
+        comments:json
+    }
+}
+export function fetchComments(page=1){
+    return function(dispatch){
+        dispatch(requestComments(page));
+
+        return fetch(`/interfaces/comments.json?page=${page}`)
+            .then(response=>response.json())
+            .then(json=>dispatch(receiveComments(page,json)))
+    }
+
 }

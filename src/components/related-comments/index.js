@@ -1,6 +1,8 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { fetchComments } from '../../actions/index.js';
 import CommentList from 'components/comment-list/index'
 
 require('./index.less');
@@ -9,46 +11,22 @@ require('./index.less');
 class RelatedComments extends React.Component {
     constructor(props) {
         super(props);
+    }
+    componentDidMount(){
+        const { dispatch, page } = this.props;
 
-        this.state = {
-            data:[
-                {author: {id:232,name:'cnak',avatar:"http://www.qdaily.com/images/missing_face.png"},
-                content: 'This is one comment',
-                id:232,
-                praise_count:0,
-                comment_count:1,
-                publish_time:"2016-08-18 14:28:36 +0800",
-                child_comments:[
-                    {author:{id:1542,name:'csa',avatar:"http://www.qdaily.com/images/missing_face.png"},
-                    comment_count:0,
-                    praise_count:0,
-                    content:'ieviuefvi.',
-                    id:89392}
-                ]},
-                {author: {id:2322,name:'wwww',avatar:"http://www.qdaily.com/images/missing_face.png"},
-                content: 'This is two comment',
-                id:1232,
-                praise_count:0,
-                comment_count:1,
-                publish_time:"2016-08-18 21:28:36 +0800",
-                child_comments:[
-                    {author:{id:2,name:'csa',avatar:"http://www.qdaily.com/images/missing_face.png"},
-                    comment_count:0,
-                    praise_count:0,
-                    content:'华为',
-                    id:8392}
-                ]}
-            ]
-        }
+        dispatch(fetchComments(page));
     }
 
     render() {
+        const {page,comments,isFetching}=this.props;
+
         return (
         	<div className="com-related-comments">
         		<div className="related-comments-hd">
-        			<span className="count">72条评论</span>
+        			<span className="count">{comments.total_count}条评论</span>
         		</div>
-        		<CommentList data={this.state.data} />
+        		<CommentList commentList={comments.comments} />
         	</div>
         );
     }
@@ -57,7 +35,31 @@ class RelatedComments extends React.Component {
 RelatedComments.displayName = 'RelatedComments';
 
 // Uncomment properties you need
-RelatedComments.propTypes = {};
+RelatedComments.propTypes = {
+    page: PropTypes.number,
+    comments: PropTypes.array,
+    isFetchting: PropTypes.bool,
+    dispatch: PropTypes.func
+};
 RelatedComments.defaultProps = {};
 
-export default RelatedComments;
+function mapStateToProps(state){
+    const { commentsReducer } = state;
+
+    const {
+        isFetchting,
+        comments: comments
+    } = commentsReducer[1] || {
+        isFetchting: true,
+        comments: []
+    };
+
+    return {
+        page: 1,
+        comments: comments,
+        isFetchting: isFetchting
+    }
+}
+
+
+export default connect(mapStateToProps)(RelatedComments);

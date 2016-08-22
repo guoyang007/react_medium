@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ArticleDetail from '../../components/article-detail/index.js';
+import RelatedComments from '../../components/related-comments/index.js';
 
 require('./show.less');
 
@@ -10,6 +11,7 @@ class ArticlesShow extends React.Component {
         return (
         	<div className="page-articles-show">
         		<ArticleDetail />
+        		<RelatedComments />
         	</div>
         );
     }

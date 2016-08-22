@@ -1,13 +1,13 @@
 'use strict';
 
 import React from 'react';
-import Comment from 'components/comment/index'
 
 require('./index.less');
 
 class ReplyList extends React.Component {
     render() {
-        const replies=this.props.data.map(function(reply){
+        const {replyList}=this.props;
+        replies=replyList.forEach(function(reply,i){
             return (
                 <div className="com-reply">
                     <div className="reply-left">

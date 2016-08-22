@@ -7,16 +7,13 @@ import Comment from 'components/comment/index'
 
 require('./index.less');
 
-const createFragment=require("react-addons-create-fragment");
 
 class CommentList extends React.Component {
     render() {
-        console.log(this.props.data)
-        
-        const comments=this.props.data.map(function(comment){
-        	let commentData=createFragment(comment);
+        const {commentList}=this.props;
+        const comments = commentList.forEach(function(comment,i){
         	return (
-        		<Comment data={commentData} />
+        		<Comment comment={comment} />
         	)
         })
 
