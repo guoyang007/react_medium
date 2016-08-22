@@ -3,13 +3,10 @@
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import React from 'react';
-import { Provider } from 'react-redux';
 import Drawer from 'material-ui/Drawer';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-
-import store from '../stores/index.js';
 
 require('./layout.less');
 
@@ -36,39 +33,37 @@ class Layout extends React.Component {
         };
 
         return (
-        	<Provider store={store()} >
-	        	<div className="page-wrapper">
-	        		<div className="com-header">
-		                <div className="header-bd">
-		                    <span className="iconfont icon-menu" onClick={this.onOpenChange.bind(this)}></span>
-		                    <span className="iconfont icon-logo"></span>
-		                    <span className="login">Login</span>
-		                </div>
-		            </div>
+        	<div className="page-wrapper">
+        		<div className="com-header">
+	                <div className="header-bd">
+	                    <span className="iconfont icon-menu" onClick={this.onOpenChange.bind(this)}></span>
+	                    <span className="iconfont icon-logo"></span>
+	                    <span className="login">Login</span>
+	                </div>
+	            </div>
 
-		            <MuiThemeProvider>
-			            <Drawer 
-			            	className="com-drawer"
-			            	containerClassName="drawer-bd"
-			            	overlayClassName="drawer-overlay"
-			            	docked={false}
-			            	open={this.state.open} 
-			            	onRequestChange={(open) => this.setState({open})}>
-				        	<ul>
-				                <li className="cur">精选</li>
-				                <li>科技</li>
-				                <li>娱乐</li>
-				                <li>商业</li>
-				                <li>汽车</li>
-				            </ul>
-				        </Drawer>
-			        </MuiThemeProvider>
+	            <MuiThemeProvider>
+		            <Drawer 
+		            	className="com-drawer"
+		            	containerClassName="drawer-bd"
+		            	overlayClassName="drawer-overlay"
+		            	docked={false}
+		            	open={this.state.open} 
+		            	onRequestChange={(open) => this.setState({open})}>
+			        	<ul>
+			                <li className="cur">精选</li>
+			                <li>科技</li>
+			                <li>娱乐</li>
+			                <li>商业</li>
+			                <li>汽车</li>
+			            </ul>
+			        </Drawer>
+		        </MuiThemeProvider>
 
-		            <div className="page-content">
-		            	{this.props.children || '空白'}
-		            </div>
-	        	</div>
-        	</Provider>
+	            <div className="page-content">
+	            	{this.props.children || '空白'}
+	            </div>
+        	</div>
         );
     }
 }

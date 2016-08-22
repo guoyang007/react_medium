@@ -1,5 +1,5 @@
 {
-    articlesByPage: {
+    articles: {
         1: {
             isFetching: true,
             articles: [{
@@ -23,6 +23,11 @@
                 "comment_count": 65,
                 "banner_pic": "/images/grid-article-banner.jpg"
             }]
-        },
-    }
+        }
+    },
+    categories: {},
+    tags: {},
+    comments: {},
+    authors: {},
+    users: {}
 }

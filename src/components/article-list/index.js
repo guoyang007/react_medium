@@ -9,8 +9,9 @@ import { Provider, connect } from 'react-redux';
 import { fetchArticles } from '../../actions/index.js';
 import RefreshControl from 'antd-mobile/lib/refresh-control';
 
-import Loading from 'components/loading/index.js'
-import Articles from 'components/articles/index.js'
+import Loading from '../../components/loading/index.js'
+import GridArticle from '../../components/grid-article/index.js'
+import GridKeyArticle from '../../components/grid-key-article/index.js'
 
 require('./index.less');
 
@@ -26,35 +27,37 @@ class ArticleList extends React.Component {
         dispatch(fetchArticles(page));
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.page != this.props.page){
-    //         const { dispatch, page } = nextProps;
+    // 下拉刷新函数
+    // 必须用promise包装
+    loadingFunction(){
+        // const { dispatch, page } = this.props;
 
-    //         dispatch(fetchArticles(page));
-    //     }
-    // }
-
-    refresh(){
-        let { articlesFetch } = this.props;
-
+        // dispatch(fetchArticles(page));
+        
+        // 临时代码，不知道如何整合
         return new Promise((resolve, reject) => {
-            if(articlesFetch.rejected){
-                reject();
-            }else if(articlesFetch.fulfilled){
-                resolve();
-            }
+            setTimeout(() => {
+              resolve();
+            }, 500);
         });
     }
 
     render() {
         const { page, articles, isFetching } = this.props;
+        const articleNodes = [];
 
-        console.log(this.props);
+        articles.forEach(function(article, i){
+            if(article.genre == 1){
+                articleNodes.push(<GridArticle key={i} article={article} />);
+            }else{
+                articleNodes.push(<GridKeyArticle key={i} article={article} />);
+            }
+        }); 
 
     	return (
-            <RefreshControl loadingFunction={this.refresh.bind(this)}>
+            <RefreshControl loadingFunction={this.loadingFunction.bind(this)}>
                 <div className="com-article-list">
-                    <Articles articles={articles} />
+                    {articleNodes}
                 </div>
             </RefreshControl>
         );
