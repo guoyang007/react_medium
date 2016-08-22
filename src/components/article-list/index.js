@@ -2,10 +2,8 @@
 
 import 'antd-mobile/lib/refresh-control/style';
 
-// import React from 'react';
-// import { connect } from 'react-refetch'
-import React, { Component, PropTypes } from 'react';
-import { Provider, connect } from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { fetchArticles } from '../../actions/index.js';
 import RefreshControl from 'antd-mobile/lib/refresh-control';
 
@@ -77,12 +75,12 @@ ArticleList.defaultProps = {};
 
 // 将全局的state映射到组件的props，相当于从store获取数据
 function mapStateToProps(state){
-    const { articlesByPage } = state;
+    const { articlesReducer } = state;
 
     const {
         isFetchting,
         articles: articles
-    } = articlesByPage[1] || {
+    } = articlesReducer[1] || {
         isFetchting: true,
         articles: []
     };

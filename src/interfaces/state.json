@@ -1,33 +1,53 @@
 {
-    articles: {
-        1: {
-            isFetching: true,
-            articles: [{
+    "articlesByTimestamp": {
+        "timestamp": "123456789",
+        "articles": []
+    },
+    "articlesByCategory": {
+        "category": 1,
+        "articles": []
+    },
+
+    // 数据结构
+    "articles": {
+        "1": {
+            "isFetching": true,
+            "articles": [{
                 "id": 2001,
                 "title": "生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞，生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞。",
                 "genre": 1,
                 "source": "片刻",
                 "praise_count": 234,
                 "comment_count": 65,
-                "banner_pic": "/images/grid-article-banner.jpg"
+                "banner_pic": "/images/grid-article-banner.jpg",
+
+                "detail_pic": "/images/articles/banner.jpg",
+                "source": "豆瓣01",
+                "content": "<p>专注可穿戴科技的荷<a href=\"\">兰时尚设计师</a> Pauline van Dongen 又推出了</p><p>这种太阳能衬衫能储存更多的能量，充电时间达到数小时。支持的充电设备包括智能手机、MP3 播放器、相机、GPS 设备和其他 USB 可充设备。暂时不需要充电的话，衬衫中的电量也会保留用以之后使用。</p><p>van Dongen 是从 2013 年开始有了设计太阳能充电服饰的想法的，之前，她还推出过太阳能派克大衣、夹克和裙子系列。</p><p>讲真，电子设备严重依赖者的充电需求，实在是太需要被满足了。</p><p>题图来自 <a href=\"http://www.dezeen.com/2016/08/15/pauline-van-dongen-solar-powered-windbreaker-jacket-charges-phone/\" rel=\"nofollow\">dezeen&nbsp;</a></p>",
+                "tags": ["电影", "贾木许", "戛纳"]
             }]
         },
-        2: {
-            isFetching: false,
-            articles: [{
+        "2": {
+            "isFetching": false,
+            "articles": [{
                 "id": 2001,
                 "title": "生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞。",
                 "genre": 2,
                 "source": "片刻",
                 "praise_count": 234,
                 "comment_count": 65,
-                "banner_pic": "/images/grid-article-banner.jpg"
+                "banner_pic": "/images/grid-article-banner.jpg",
+
+                "detail_pic": "/images/articles/banner.jpg",
+                "source": "豆瓣01",
+                "content": "<p>专注可穿戴科技的荷<a href=\"\">兰时尚设计师</a> Pauline van Dongen 又推出了</p><p>这种太阳能衬衫能储存更多的能量，充电时间达到数小时。支持的充电设备包括智能手机、MP3 播放器、相机、GPS 设备和其他 USB 可充设备。暂时不需要充电的话，衬衫中的电量也会保留用以之后使用。</p><p>van Dongen 是从 2013 年开始有了设计太阳能充电服饰的想法的，之前，她还推出过太阳能派克大衣、夹克和裙子系列。</p><p>讲真，电子设备严重依赖者的充电需求，实在是太需要被满足了。</p><p>题图来自 <a href=\"http://www.dezeen.com/2016/08/15/pauline-van-dongen-solar-powered-windbreaker-jacket-charges-phone/\" rel=\"nofollow\">dezeen&nbsp;</a></p>",
+                "tags": ["电影", "贾木许", "戛纳"]
             }]
         }
     },
-    categories: {},
-    tags: {},
-    comments: {},
-    authors: {},
-    users: {}
+    "categories": {},
+    "tags": {},
+    "comments": {},
+    "authors": {},
+    "users": {}
 }
