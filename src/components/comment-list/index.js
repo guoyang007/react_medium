@@ -10,10 +10,9 @@ require('./index.less');
 const createFragment=require("react-addons-create-fragment");
 
 class CommentList extends React.Component {
-
     render() {
-
         console.log(this.props.data)
+        
         const comments=this.props.data.map(function(comment){
         	let commentData=createFragment(comment);
         	return (

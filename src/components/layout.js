@@ -1,6 +1,5 @@
 'use strict';
 
-import 'components/common/index.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import React from 'react';
@@ -65,7 +64,6 @@ class Layout extends React.Component {
 	            	{this.props.children || '空白'}
 	            </div>
         	</div>
-    		
         );
     }
 }
