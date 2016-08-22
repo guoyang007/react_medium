@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import { connect } from 'react-refetch'
 
 import Loading from 'components/loading/index.js'
 import RelatedComments from 'components/related-comments/index'
@@ -40,7 +39,7 @@ class ArticleDetail extends React.Component {
                             {tagNodes}
                         </ul>
                     </div>
-                    <RelatedComments/>
+                    <RelatedComments />
                 </div>
             );
         }
@@ -53,6 +52,4 @@ ArticleDetail.propTypes = {};
 ArticleDetail.defaultProps = {};
 
 
-export default connect(props => ({
-    articleFetch: `/interfaces/articles/1.json`
-}))(ArticleDetail);
+export default ArticleDetail;

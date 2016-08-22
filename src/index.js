@@ -1,3 +1,5 @@
+import 'components/common/index.js';
+
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -13,7 +15,6 @@ import ArticleDetail from './components/article-detail/index.js';
 
 injectTapEventPlugin();
 
-// let store = createStore(mediumApp);
 
 // Render the main component into the dom
 ReactDOM.render((

@@ -1,0 +1,28 @@
+{
+    articlesByPage: {
+        1: {
+            isFetching: true,
+            articles: [{
+                "id": 2001,
+                "title": "生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞，生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞。",
+                "genre": 1,
+                "source": "片刻",
+                "praise_count": 234,
+                "comment_count": 65,
+                "banner_pic": "/images/grid-article-banner.jpg"
+            }]
+        },
+        2: {
+            isFetching: false,
+            articles: [{
+                "id": 2001,
+                "title": "生活不是等待暴风雨过去而是让我们学会在雨中翩翩起舞。",
+                "genre": 2,
+                "source": "片刻",
+                "praise_count": 234,
+                "comment_count": 65,
+                "banner_pic": "/images/grid-article-banner.jpg"
+            }]
+        },
+    }
+}

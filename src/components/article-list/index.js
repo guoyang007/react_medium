@@ -1,19 +1,38 @@
 'use strict';
 
-import React from 'react';
-
 import 'antd-mobile/lib/refresh-control/style';
+
+// import React from 'react';
+// import { connect } from 'react-refetch'
+import React, { Component, PropTypes } from 'react';
+import { Provider, connect } from 'react-redux';
+import { fetchArticles } from '../../actions/index.js';
 import RefreshControl from 'antd-mobile/lib/refresh-control';
-import { connect } from 'react-refetch'
 
 import Loading from 'components/loading/index.js'
-import GridArticle from 'components/grid-article/index.js'
-import GridKeyArticle from 'components/grid-key-article/index.js'
-
+import Articles from 'components/articles/index.js'
 
 require('./index.less');
 
+
 class ArticleList extends React.Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount(){
+        const { dispatch, page } = this.props;
+
+        dispatch(fetchArticles(page));
+    }
+
+    // componentWillReceiveProps(nextProps){
+    //     if(nextProps.page != this.props.page){
+    //         const { dispatch, page } = nextProps;
+
+    //         dispatch(fetchArticles(page));
+    //     }
+    // }
 
     refresh(){
         let { articlesFetch } = this.props;
@@ -27,33 +46,15 @@ class ArticleList extends React.Component {
         });
     }
 
-
     render() {
-    	let { articlesFetch } = this.props,
-            articleNodes = [];
+        const { page, articles, isFetching } = this.props;
 
-        if (articlesFetch.pending) {
-    		return (<Loading />);
-    	} else if (articlesFetch.rejected) {
-    		return (<Loading />);
-    	} else if (articlesFetch.fulfilled) {
-            articlesFetch.value.forEach(function(article, i){
-                if(article.genre == 1){
-                    articleNodes.push(<GridArticle key={i} {...article} />);
-                }else{
-                    articleNodes.push(<GridKeyArticle key={i} {...article} />);
-                }
-            });
-
-            articleNodes.push(<Loading key={articlesFetch.value.length} />);
-    	}
+        console.log(this.props);
 
     	return (
-            <RefreshControl
-                loadingFunction={this.refresh.bind(this)}
-            >
+            <RefreshControl loadingFunction={this.refresh.bind(this)}>
                 <div className="com-article-list">
-                    {articleNodes}
+                    <Articles articles={articles} />
                 </div>
             </RefreshControl>
         );
@@ -62,18 +63,32 @@ class ArticleList extends React.Component {
 
 ArticleList.displayName = 'ArticleList';
 
-ArticleList.propTypes = {};
+ArticleList.propTypes = {
+    page: PropTypes.number,
+    articles: PropTypes.array,
+    isFetchting: PropTypes.bool,
+    dispatch: PropTypes.func
+};
 ArticleList.defaultProps = {};
 
-export default connect(props => {
+
+// 将全局的state映射到组件的props，相当于从store获取数据
+function mapStateToProps(state){
+    const { articlesByPage } = state;
+
+    const {
+        isFetchting,
+        articles: articles
+    } = articlesByPage[1] || {
+        isFetchting: true,
+        articles: []
+    };
+
     return {
-        articlesFetch: `/interfaces/articles.json`,
-        refreshArticles: () => ({
-            articlesFetch: {
-                url: `/interfaces/articles2.json`,
-                force: true,
-                refreshing: true
-            }
-        })
+        page: 1,
+        articles: articles,
+        isFetchting: isFetchting
     }
-})(ArticleList);
+}
+
+export default connect(mapStateToProps)(ArticleList);

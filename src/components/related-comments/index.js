@@ -7,7 +7,6 @@ require('./index.less');
 
 
 class RelatedComments extends React.Component {
-
     constructor(props) {
         super(props);
 
