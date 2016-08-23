@@ -69,7 +69,7 @@ function requestComments(page){
 export const RECEIVE_COMMENTS='RECEIVE_COMMENTS'
 function receiveComments(page,json){
     return{
-        type:REQUEST_COMMENTS,
+        type:RECEIVE_COMMENTS,
         page:page,
         comments:json
     }

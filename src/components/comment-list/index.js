@@ -11,10 +11,9 @@ require('./index.less');
 class CommentList extends React.Component {
     render() {
         const {commentList}=this.props;
-        const comments = commentList.forEach(function(comment,i){
-        	return (
-        		<Comment comment={comment} />
-        	)
+        const comments=[];
+        commentList.forEach(function(comment,i){
+            comments.push(<Comment comment={comment} key={i}/>);
         })
 
         return (

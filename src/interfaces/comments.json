@@ -7,17 +7,17 @@
     "comment_count": 1,
     "publish_time": "2016-08-18 14:28:36 +0800",
     "child_comments": [{
-        "author": { "id": 1542, "name": "csa", "avatar": "http://www.qdaily.com/images/missing_face.png" },
+        "author": { "id": 21542, "name": "caaAAA", "avatar": "http://www.qdaily.com/images/missing_face.png" },
         "comment_count": 0,
         "praise_count": 0,
         "content": "ieviuefvi.",
-        "id": 89392
+        "id": 92
     }, {
-        "author": { "id": 152, "name": "vdfa", "avatar": "http://www.qdaily.com/images/missing_face.png" },
+        "author": { "id": 152, "name": "sknd", "avatar": "http://www.qdaily.com/images/missing_face.png" },
         "comment_count": 0,
         "praise_count": 0,
         "content": "能看见我那次.",
-        "id": 892
+        "id": 822
     }]
 
 }, {
@@ -33,7 +33,7 @@
         "comment_count": 0,
         "praise_count": 0,
         "content": "ieviuefvi.",
-        "id": 092
+        "id": 92
     }, {
         "author": { "id": 152, "name": "sknd", "avatar": "http://www.qdaily.com/images/missing_face.png" },
         "comment_count": 0,
@@ -41,4 +41,4 @@
         "content": "能看见我那次.",
         "id": 822
     }]
-}, ]
+}]

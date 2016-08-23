@@ -21,13 +21,10 @@ class RelatedComments extends React.Component {
     render() {
         const {page,comments,isFetching}=this.props;
 
-        console.log(1111)
-        console.log(comments)
-
         return (
         	<div className="com-related-comments">
         		<div className="related-comments-hd">
-        			<span className="count">22条评论</span>
+        			<span className="count">{12}条评论</span>
         		</div>
         		<CommentList commentList={comments} />
         	</div>
