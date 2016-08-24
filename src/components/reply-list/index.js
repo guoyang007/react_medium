@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Utils from '../common/utils.js';
 
 require('./index.less');
 
@@ -9,7 +10,7 @@ class ReplyList extends React.Component {
         const {replyList}=this.props;
         const replies=[];
         replyList.forEach(function(reply,i){
-            console.log(reply)
+
             replies.push(
                 <div className="com-reply clearfix" key={i}>
                     <div className="reply-left">
@@ -20,7 +21,7 @@ class ReplyList extends React.Component {
                     <div className="reply-right">
                         <div className="name-date">
                             <a href="javascript:void(0);" className="name">{reply.author.name}</a>
-                            <span className="date smart-date" data-originDate={reply.publish_date}>1分钟前</span>
+                            <span className="date smart-date">{Utils.smartDate(reply.publish_time)}</span>
                             <div className="ribbon">
                                 <span className="iconfont icon-heart">{reply.praise_count}</span>
                                 <span className="iconfont icon-message">{reply.message_count}</span>
