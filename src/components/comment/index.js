@@ -1,17 +1,15 @@
 'use strict'
 
-import React from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import ReplyList from '../reply-list/index.js';
-
+import Utils from '../common/utils.js';
 require('./index.less');
 
 class Comment extends React.Component{
 
-
 	render(){
 			const {comment}=this.props;
-
-			console.log(123,comment)
 
 			return(
 				<div className="com-comment clearfix">
@@ -23,7 +21,7 @@ class Comment extends React.Component{
 					<div className="comment-right">
 						<div className="name-date">
 							<a href="javascript:void(0);" className="name">{comment.author.name}</a>
-							<span className="date smart-date" data-originDate={comment.publish_date}>5秒前</span>
+							<span className="date smart-date">{Utils.smartDate(comment.publish_time)}</span>
 							<div className="ribbon">
 								<span className="iconfont icon-heart">{comment.praise_count}</span>
 								<span className="iconfont icon-message">{comment.message_count}</span>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import Utils from '../common/utils.js';
 
 require('./index.less');
 
@@ -17,7 +18,7 @@ class GridArticle extends React.Component {
 	           		<span>{article.source}</span>
 	           		<span className="iconfont icon-heart">{article.praise_count}</span>
 	           		<span className="iconfont icon-message">{article.comment_count}</span>
-	           		<span className="smart-date">1小时前</span>
+	           		<span className="smart-date">{Utils.smartDate(article.publish_time)}</span>
 	           		</div>
 	           	</div>
 	           	<div className="grid-article-right">

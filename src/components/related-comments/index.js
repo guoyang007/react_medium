@@ -20,7 +20,7 @@ class RelatedComments extends React.Component {
 
     render() {
         const {page,comments,isFetching}=this.props;
-
+        console.log("comment component")
         return (
         	<div className="com-related-comments">
         		<div className="related-comments-hd">
