@@ -20,13 +20,12 @@ class RelatedComments extends React.Component {
 
     render() {
         const {page,comments,isFetching}=this.props;
-        console.log("comment component")
         return (
         	<div className="com-related-comments">
         		<div className="related-comments-hd">
-        			<span className="count">{12}条评论</span>
+        			<span className="count">{comments.total_count}条评论</span>
         		</div>
-        		<CommentList commentList={comments} />
+        		<CommentList commentList={comments.content} />
         	</div>
         );
     }
@@ -37,7 +36,7 @@ RelatedComments.displayName = 'RelatedComments';
 // Uncomment properties you need
 RelatedComments.propTypes = {
     page: PropTypes.number,
-    comments: PropTypes.array,
+    //comments: PropTypes.array,
     isFetchting: PropTypes.bool,
     dispatch: PropTypes.func
 };

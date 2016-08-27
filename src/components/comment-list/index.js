@@ -9,6 +9,9 @@ require('./index.less');
 
 
 class CommentList extends React.Component {
+    constructor(props){
+        super(props)
+    }
     render() {
         const {commentList}=this.props;
         const comments=[];
