@@ -16,7 +16,7 @@ class Comment extends React.Component{
 		}
 	}
 	//点赞
-	markPraise(e){
+	clickHeart(e){
 
 		this.setState({
 			praise:!this.state.praise,
@@ -50,7 +50,7 @@ class Comment extends React.Component{
 							<a href="javascript:void(0);" className="name">{comment.author.name}</a>
 							<span className="date smart-date">{Utils.smartDate(comment.publish_time)}</span>
 							<div className="ribbon">
-								<span className={praiseClass} onClick={this.markPraise.bind(this)}></span>
+								<span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
 								<span>{this.state.praise_count}</span>
 								<span className="iconfont icon-message">{comment.message_count}</span>
 							</div>

@@ -17,7 +17,7 @@ class Reply extends React.Component {
         }
     }
 
-    markPraise(){
+    clickHeart(){
         console.log(this.state.praise);
         console.log(this.state.praise_count);
         this.setState({
@@ -54,7 +54,7 @@ class Reply extends React.Component {
                         <a href="javascript:void(0);" className="name">{reply.author.name}</a>
                         <span className="date smart-date">{Utils.smartDate(reply.publish_time)}</span>
                         <div className="ribbon">
-                            <span className={praiseClass} onClick={this.markPraise.bind(this)}></span>
+                            <span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
                             <span>{this.state.praise_count}</span>
                             <span className="iconfont icon-message">{reply.message_count}</span>
                         </div>

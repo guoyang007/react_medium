@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { fetchArticle } from '../../actions/index.js';
 
 import Loading from '../../components/loading/index.js'
-import RelatedComments from '../../components/related-comments/index'
+import Toolbar from '../../components/toolbar/index.js';
+
 
 require('./index.less');
 
@@ -36,6 +37,7 @@ class ArticleDetail extends React.Component {
                     <ul className="tags">
                     </ul>
                 </div>
+                <Toolbar praise={article.praise} praiseCount={article.praise_count} commentCount={article.comment_count}/>
             </div>
         );
     }
