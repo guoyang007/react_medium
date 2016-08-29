@@ -11,6 +11,7 @@ class ArticlesShow extends React.Component {
         return (
         	<div className="page-articles-show">
         		<ArticleDetail params={this.props.params} />
+        		<RelatedComments />
         	</div>
         );
     }

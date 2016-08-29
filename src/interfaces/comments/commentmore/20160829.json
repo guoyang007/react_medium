@@ -1,5 +1,6 @@
 {
-    "content": [{
+    "total_count": 123,
+    "comments": [{
         "total_count": 12,
         "author": { "id": 232, "name": "cnak", "avatar": "http://www.qdaily.com/images/missing_face.png" },
         "content": "This is one comment",
@@ -52,6 +53,5 @@
             "praise": false,
             "id": 822
         }]
-    }],
-    "total_count": 123
+    }]
 }
