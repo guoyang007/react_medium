@@ -1,3 +1,5 @@
+// 核心，该数据结构的设计直接关联到整个系统和架构的设计
+// 使用normalize将其扁平化，更适合管理
 {
     "articlesByTimestamp": {
         "timestamp": "123456789",
@@ -48,45 +50,67 @@
     "categories": {},
     "tags": {},
     "comments": {
-        "1":{"author": {"id":232,"name":"cnak","avatar":"http://www.qdaily.com/images/missing_face.png"},
+        "1": {
+            "author": { "id": 232, "name": "cnak", "avatar": "http://www.qdaily.com/images/missing_face.png" },
             "content": "This is one comment",
-            "id":232,
-            "praise_count":0,
-            "comment_count":1,
-            "publish_time":"2016-08-18 14:28:36 +0800",
-            "child_comments":{
-                "0":{"author":{"id":1542,"name":"csa","avatar":"http://www.qdaily.com/images/missing_face.png"},
-                    "comment_count":0,
-                    "praise_count":0,
-                    "content":"ieviuefvi.",
-                    "id":89392
+            "id": 232,
+            "praise_count": 0,
+            "comment_count": 1,
+            "publish_time": "2016-08-18 14:28:36 +0800",
+            "child_comments": {
+                "0": {
+                    "author": {
+                        "id": 1542,
+                        "name": "csa",
+                        "avatar": "http://www.qdaily.com/images/missing_face.png"
+                    },
+                    "comment_count": 0,
+                    "praise_count": 0,
+                    "content": "ieviuefvi.",
+                    "id": 89392
                 },
-                "1":{"author":{"id":152,"name":"vdfa","avatar":"http://www.qdaily.com/images/missing_face.png"},
-                    "comment_count":0,
-                    "praise_count":0,
-                    "content":"能看见我那次.",
-                    "id":892
+                "1": {
+                    "author": {
+                        "id": 152,
+                        "name": "vdfa",
+                        "avatar": "http://www.qdaily.com/images/missing_face.png"
+                    },
+                    "comment_count": 0,
+                    "praise_count": 0,
+                    "content": "能看见我那次.",
+                    "id": 892
                 }
             }
         },
-        "2":{"author": {"id":23232,"name":"njk","avatar":"http://www.qdaily.com/images/missing_face.png"},
+        "2": {
+            "author": { "id": 23232, "name": "njk", "avatar": "http://www.qdaily.com/images/missing_face.png" },
             "content": "This is two comment",
-            "id":2132,
-            "praise_count":0,
-            "comment_count":1,
-            "publish_time":"2016-08-18 14:28:36 +0800",
-            "child_comments":{
-                "0":{"author":{"id":21542,"name":"caaAAA","avatar":"http://www.qdaily.com/images/missing_face.png"},
-                    "comment_count":0,
-                    "praise_count":0,
-                    "content":"ieviuefvi.",
-                    "id":092
+            "id": 2132,
+            "praise_count": 0,
+            "comment_count": 1,
+            "publish_time": "2016-08-18 14:28:36 +0800",
+            "child_comments": {
+                "0": {
+                    "author": {
+                        "id": 21542,
+                        "name": "caaAAA",
+                        "avatar": "http://www.qdaily.com/images/missing_face.png"
+                    },
+                    "comment_count": 0,
+                    "praise_count": 0,
+                    "content": "ieviuefvi.",
+                    "id": 092
                 },
-                "1":{"author":{"id":152,"name":"sknd","avatar":"http://www.qdaily.com/images/missing_face.png"},
-                    "comment_count":0,
-                    "praise_count":0,
-                    "content":"能看见我那次.",
-                    "id":822
+                "1": {
+                    "author": {
+                        "id": 152,
+                        "name": "sknd",
+                        "avatar": "http://www.qdaily.com/images/missing_face.png"
+                    },
+                    "comment_count": 0,
+                    "praise_count": 0,
+                    "content": "能看见我那次.",
+                    "id": 822
                 }
             }
         },
