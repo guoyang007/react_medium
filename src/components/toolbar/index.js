@@ -9,8 +9,9 @@ class Toolbar extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            praise:this.props.praise,
-            praise_count:this.props.praiseCount
+            praise:true,
+            praise_count:121
+            //this.props.xxx赋值拿不到，全是undefined
         }
     }
     clickHeart(){
@@ -20,20 +21,23 @@ class Toolbar extends React.Component {
 
         })
     }
+    goBack(){
+        window.history.back();
+    }
     render() {
         const {praise,praiseCount,commentCount}=this.props;
-        console.log(this.state)
-        console.log(this.props.praiseCount)
+
         let praiseClass=classNames({
             'iconfont icon-praise':true,
             'active':this.state.praise
         })
+
         return (
 			<div className="com-toolbar clearfix">
-                <div className="toolbar-left"></div>
+                <div className="toolbar-left" onClick={this.goBack.bind(this)}></div>
                 <div className="toolbar-right">
                     <span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
-                    <span>{this.state.praise_count}</span>
+                    <span>{this.state.praise_count==0?null:this.state.praise_count}</span>
                     <span className="iconfont icon-message"></span>
                     <span>{commentCount}</span>
                     <span className="iconfont icon-praise"></span>
