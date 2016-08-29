@@ -16,7 +16,7 @@ class GridArticle extends React.Component {
 	           		<h2>{article.title}</h2>
 	           		<div className="ribbon">
 	           		<span>{article.source}</span>
-	           		<span className="iconfont icon-heart">{article.praise_count}</span>
+	           		<span className="iconfont icon-praise">{article.praise_count}</span>
 	           		<span className="iconfont icon-message">{article.comment_count}</span>
 	           		<span className="smart-date">{Utils.smartDate(article.publish_time)}</span>
 	           		</div>
