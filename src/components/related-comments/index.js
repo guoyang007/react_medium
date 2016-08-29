@@ -13,19 +13,21 @@ class RelatedComments extends React.Component {
         super(props);
     }
     componentDidMount(){
-        const { dispatch, page } = this.props;
+        const { dispatch } = this.props;
 
-        dispatch(fetchComments(page));
+        dispatch(fetchComments());
     }
 
     render() {
-        const {page,comments,isFetching}=this.props;
+        const { comments, count, isFetching } = this.props;
+        console.log(this.props);
         return (
         	<div className="com-related-comments">
         		<div className="related-comments-hd">
-        			<span className="count">{comments.total_count}条评论</span>
+        			<span className="count">{count}条评论</span>
         		</div>
-        		<CommentList commentList={comments.content} />
+
+        		<CommentList commentList={comments} />
         	</div>
         );
     }
@@ -33,10 +35,9 @@ class RelatedComments extends React.Component {
 
 RelatedComments.displayName = 'RelatedComments';
 
-// Uncomment properties you need
 RelatedComments.propTypes = {
-    page: PropTypes.number,
-    //comments: PropTypes.array,
+    count: PropTypes.number,
+    comments: PropTypes.array,
     isFetchting: PropTypes.bool,
     dispatch: PropTypes.func
 };
@@ -46,17 +47,19 @@ function mapStateToProps(state){
     const { commentsReducer } = state;
 
     const {
+        count,
         isFetchting,
-        comments: comments
-    } = commentsReducer[1] || {
+        comments
+    } = commentsReducer['20160829'] || {
+        count: 0,
         isFetchting: true,
         comments: []
     };
 
     return {
-        page: 1,
-        comments: comments,
-        isFetchting: isFetchting
+        count,
+        comments,
+        isFetchting
     }
 }
 
