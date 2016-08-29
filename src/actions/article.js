@@ -1,4 +1,16 @@
-import { createAction } from 'redux-act';
+import fetch from 'isomorphic-fetch'
+import { createActions } from 'redux-actions';
 
-const requestArticle = createAction('REQUEST_ARTICLE', (articleId) => ({articleId}))
-const receiveArticle = createAction('RECEIVE_ARTICLE', (articleId, json) => ({articleId, json}))
+
+export const { fetchArticle } = createActions({
+    FETCH_ARTICLE: async (articleId) => {
+        try {
+            let response = await fetch(`/interfaces/articles/${articleId}.json`);
+            let article = await response.json();
+
+            return { articleId, article }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+});

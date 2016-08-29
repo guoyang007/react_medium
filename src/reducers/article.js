@@ -1,39 +1,16 @@
-import { REQUEST_ARTICLE, RECEIVE_ARTICLE } from '../actions/index.js';
+import { handleActions } from 'redux-actions';
+import { FETCH_ARTICLE } from '../actions/index.js';
 
 
-function article(state = {
-    isFecting: false,
-    article: {}
-}, action) {
-    switch (action.type) {
-        case REQUEST_ARTICLE:
-            return Object.assign({}, state, {
-                isFecting: true
-            });
-        case RECEIVE_ARTICLE:
-            return Object.assign({}, state, {
+export default handleActions({
+    FETCH_ARTICLE: (state, action) => {
+        let payload = action.payload;
+
+        return Object.assign({}, state, {
+            [payload.articleId]: {
                 isFecting: false,
-                article: action.article
-            });
-        default:
-            return state;
+                article: payload.article
+            }
+        });
     }
-}
-
-
-function articleReducer(state = {
-
-}, action) {
-    switch (action.type) {
-        case REQUEST_ARTICLE:
-        case RECEIVE_ARTICLE:
-            return Object.assign({}, state, {
-                [action.articleId]: article(state[action.articleId], action)
-            });
-        default:
-            return state;
-    }
-}
-
-
-export default articleReducer;
+}, {});

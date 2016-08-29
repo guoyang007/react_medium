@@ -20,9 +20,9 @@ class ArticleList extends React.Component {
     }
 
     componentDidMount(){
-        const { dispatch, page } = this.props;
+        const { dispatch } = this.props;
 
-        dispatch(fetchArticles(page));
+        dispatch(fetchArticles());
     }
 
     // 下拉刷新函数
@@ -41,7 +41,7 @@ class ArticleList extends React.Component {
     }
 
     render() {
-        const { page, articles, isFetching } = this.props;
+        const { articles, isFetching } = this.props;
         const articleNodes = [];
 
         articles.forEach(function(article, i){
@@ -80,7 +80,7 @@ function mapStateToProps(state){
     const {
         isFetchting,
         articles: articles
-    } = articlesReducer[1] || {
+    } = articlesReducer['20160829'] || {
         isFetchting: true,
         articles: []
     };
