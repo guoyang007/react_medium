@@ -3,14 +3,14 @@ import { createActions } from 'redux-actions';
 
 
 export const { fetchComments } = createActions({
-    FETCH_COMMENTS: async (timestamp = '20160829') => {
+    FETCH_COMMENTS: async (articleId = '1') => {
         try {
-            let response = await fetch(`/interfaces/comments/commentmore/${timestamp}.json`);
+            let response = await fetch(`/interfaces/comments/${articleId}.json`);
             let json = await response.json();
             let count = json.total_count;
             let comments = json.comments;
 
-            return { timestamp, comments, count }
+            return { articleId, comments, count }
         } catch (err) {
             console.log(err);
         }

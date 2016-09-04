@@ -50,7 +50,7 @@ function mapStateToProps(state){
         count,
         isFetchting,
         comments
-    } = commentsReducer['20160829'] || {
+    } = commentsReducer['1'] || {
         count: 0,
         isFetchting: true,
         comments: []

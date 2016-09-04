@@ -7,7 +7,7 @@ export default handleActions({
         let payload = action.payload;
 
         return Object.assign({}, state, {
-            [payload.timestamp]: {
+            [payload.articleId]: {
                 isFecting: false,
                 count: payload.count,
                 comments: payload.comments
