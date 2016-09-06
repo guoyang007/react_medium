@@ -1,9 +1,6 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { fetchArticle } from '../../actions/index.js';
-
 import Loading from '../../components/loading/index.js'
 import Toolbar from '../../components/toolbar/index.js';
 
@@ -16,15 +13,8 @@ class ArticleDetail extends React.Component {
         super(props);
     }
 
-    componentDidMount(){
-        const { dispatch, articleId } = this.props;
-
-        dispatch(fetchArticle(articleId));
-    }
-
     render() {
         let { article } = this.props;
-
         return (
             <div className="com-article-detail">
                 <div className="article-detail-hd imgcover">
@@ -49,29 +39,7 @@ ArticleDetail.propTypes = {
     isFetching: PropTypes.bool,
     articleId: PropTypes.number,
     article: PropTypes.object,
-    dispatch: PropTypes.func
 };
 ArticleDetail.defaultProps = {};
 
-
-// 将全局的state映射到组件的props，相当于从store获取数据
-function mapStateToProps(state){
-    const { articleReducer } = state;
-
-    const {
-        isFetchting,
-        article: article
-    } = articleReducer[1] || {
-        isFetchting: true,
-        article: {}
-    };
-
-    return {
-        articleId: 1,
-        article: article,
-        isFetchting: isFetchting
-    }
-}
-
-
-export default connect(mapStateToProps)(ArticleDetail);
+export default ArticleDetail;
