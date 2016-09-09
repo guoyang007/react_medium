@@ -19,7 +19,7 @@ class ArticleList extends React.Component {
         super(props)
     }
 
-    componentDidMount(){
+    componentWillMount(){
         const { dispatch } = this.props;
 
         dispatch(fetchArticles());

@@ -11,7 +11,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import store from './stores/index.js';
 
 import HomesIndex from './pages/homes/index.js';
-import ArticlesShow from './pages/articles/show.js';
 import Layout from './components/layout.js';
 
 injectTapEventPlugin();
@@ -24,7 +23,12 @@ ReactDOM.render((
 				<IndexRoute component={HomesIndex} />
 				
 				<Route path="/homes" component={HomesIndex} />
-				<Route path="/articles/:id" component={ArticlesShow} />
+				<Route path="/articles/:id" getComponent={(location, callback) => {
+					console.log("detail");
+			      require.ensure([], (require) => {
+			        callback(null, require('./pages/articles/show.js'));
+			      },'show');
+			    }} />
 			</Route>
 		</Router>
 	</Provider>

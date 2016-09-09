@@ -19,6 +19,7 @@ let config = Object.assign({}, baseConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     })
