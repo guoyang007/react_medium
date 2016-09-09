@@ -24,9 +24,8 @@ ReactDOM.render((
 				
 				<Route path="/homes" component={HomesIndex} />
 				<Route path="/articles/:id" getComponent={(location, callback) => {
-					console.log("detail");
 			      require.ensure([], (require) => {
-			        callback(null, require('./pages/articles/show.js'));
+			        callback(null, require('./pages/articles/show.js').default);
 			      },'show');
 			    }} />
 			</Route>
