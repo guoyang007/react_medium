@@ -21,7 +21,8 @@ class ArticleList extends React.Component {
 
     componentWillMount(){
         const { dispatch } = this.props;
-
+        //fetchArticles是异步获取，所以即使是willMount时发请求，仍然会比render中的晚
+        //所有在render中取值时要保证有值
         dispatch(fetchArticles());
     }
 
@@ -41,17 +42,19 @@ class ArticleList extends React.Component {
     }
 
     render() {
-        const { articles, isFetching } = this.props;
+        const { articlesList } = this.props;
         const articleNodes = [];
+        if(articlesList){
+            const articles=articlesList.articles;
+            articles.forEach(function(article, i){
+                if(article.genre == 1){
+                    articleNodes.push(<GridArticle key={i} article={article} />);
+                }else{
+                    articleNodes.push(<GridKeyArticle key={i} article={article} />);
+                }
+            }); 
 
-        articles.forEach(function(article, i){
-            if(article.genre == 1){
-                articleNodes.push(<GridArticle key={i} article={article} />);
-            }else{
-                articleNodes.push(<GridKeyArticle key={i} article={article} />);
-            }
-        }); 
-
+        }
     	return (
             <RefreshControl loadingFunction={this.loadingFunction.bind(this)}>
                 <div className="com-article-list">
@@ -74,21 +77,9 @@ ArticleList.defaultProps = {};
 
 
 // 将全局的state映射到组件的props，相当于从store获取数据
-function mapStateToProps(state){
-    const { articlesReducer } = state;
-
-    const {
-        isFetchting,
-        articles: articles
-    } = articlesReducer['20160829'] || {
-        isFetchting: true,
-        articles: []
-    };
-
-    return {
-        page: 1,
-        articles: articles,
-        isFetchting: isFetchting
+function mapStateToProps(state,ownParams){
+    return{
+        articlesList:state.articles[20160829]
     }
 }
 

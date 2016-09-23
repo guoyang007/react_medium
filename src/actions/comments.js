@@ -14,5 +14,20 @@ export const { fetchComments } = createActions({
         } catch (err) {
             console.log(err);
         }
+    },
+    POST_PRAISE:async(data)=>{
+        try {
+            await fetch('/send',{
+                method:'POST',
+                headers:{
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Content-Type': "application/json"
+                },
+                body:JSON.stringify(data)
+            });
+        } catch (err){
+            console.log(err)
+        }
     }
 });

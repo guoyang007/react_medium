@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { FETCH_COMMENTS } from '../actions/index.js';
+import { FETCH_COMMENTS,POST_PRAISE } from '../actions/index.js';
 
 
 export default handleActions({
@@ -13,5 +13,8 @@ export default handleActions({
                 comments: payload.comments
             }
         });
+    },
+    POST_PRAISE:(state,action)=>{
+        
     }
 }, {});

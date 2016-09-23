@@ -13,18 +13,31 @@ require('./show.less');
 class ArticlesShow extends React.Component {
 	componentWillMount(){
 	    const { dispatch, params } = this.props;
-	    
 	    dispatch(fetchArticle(params.id));
 	    dispatch(fetchComments());
 	}
     render() {
-    	const {article,count,comments,commentsIsFetchting}=this.props;
-        return (
-        	<div className="page-articles-show">
-        		<ArticleDetail article={article}/>
-        		<RelatedComments count={count} comments={comments} commentsIsFetchting={commentsIsFetchting}/>
-        	</div>
-        );
+    	const {article,comments}=this.props;
+        let  articleCom;
+        let  commentsCom;
+        if(true){
+            console.log(111,article)
+            if (article) {
+               articleCom = <ArticleDetail article_prop={article}/>
+            }
+            if (comments) {
+               commentsCom= <RelatedComments comments_prop={comments}/>
+            }
+           return (
+                <div className="page-articles-show">
+                    {articleCom}
+                    {commentsCom}
+                </div>
+            );
+        }else{
+            return(<div></div>)
+        }
+        
     }
 }
 
@@ -35,31 +48,35 @@ ArticlesShow.defaultProps = {};
 
 // 将全局的state映射到组件的props，相当于从store获取数据
 function mapStateToProps(state,ownParams){
-    const { articleReducer ,commentsReducer} = state;
-    const {
-        article: article,
-        isFetchting
-    } = articleReducer[ownParams.params.id] || {
-        article: {},
-        isFetchting:true
-    };
-    const {
-        count,
-        commentsIsFetchting,
-        comments
-    } = commentsReducer[ownParams.params.id] || {
-        count: 0,
-        commentsIsFetchting: true,
-        comments: []
-    };
+    const { article ,comments} = state;
+    // const {
+    //     article: article,
+    //     isFetchting
+    // } = article[ownParams.params.id] || {
+    //     article: {},
+    //     isFetchting:true
+    // };
+    // const {
+    //     count,
+    //     commentsIsFetchting,
+    //     comments
+    // } = comments[ownParams.params.id] || {
+    //     count: 0,
+    //     commentsIsFetchting: true,
+    //     comments: []
+    // };
 
+    // return {
+    //     articleId: 1,
+    //     article: article,
+    //     isFetchting: isFetchting,
+    //     commentsIsFetchting:commentsIsFetchting,
+    //     count:count,
+    //     comments:comments
+    // }
     return {
-        articleId: 1,
-        article: article,
-        isFetchting: isFetchting,
-        commentsIsFetchting:commentsIsFetchting,
-        count:count,
-        comments:comments
+        article:article[ownParams.params.id],
+        comments:comments[ownParams.params.id]
     }
 }
 

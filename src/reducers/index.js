@@ -6,9 +6,9 @@ import commentsReducer from './comments.js';
 
 
 const rootReducer = combineReducers({
-    articleReducer,
-    articlesReducer,
-    commentsReducer
+    article:articleReducer,
+    articles:articlesReducer,
+    comments:commentsReducer
 });
 
 export default rootReducer;
