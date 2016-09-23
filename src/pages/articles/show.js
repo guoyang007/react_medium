@@ -20,24 +20,19 @@ class ArticlesShow extends React.Component {
     	const {article,comments}=this.props;
         let  articleCom;
         let  commentsCom;
-        if(true){
-            console.log(111,article)
-            if (article) {
-               articleCom = <ArticleDetail article_prop={article}/>
-            }
-            if (comments) {
-               commentsCom= <RelatedComments comments_prop={comments}/>
-            }
-           return (
-                <div className="page-articles-show">
-                    {articleCom}
-                    {commentsCom}
-                </div>
-            );
-        }else{
-            return(<div></div>)
+
+        if (article) {
+           articleCom = <ArticleDetail article_prop={article}/>
         }
-        
+        if (comments) {
+           commentsCom= <RelatedComments comments_prop={comments}/>
+        }
+       return (
+            <div className="page-articles-show">
+                {articleCom}
+                {commentsCom}
+            </div>
+        );        
     }
 }
 
