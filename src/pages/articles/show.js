@@ -11,7 +11,7 @@ import RelatedComments from '../../components/related-comments/index.js';
 require('./show.less');
 
 class ArticlesShow extends React.Component {
-	componentWillMount(){
+	componentDidMount(){
 	    const { dispatch, params } = this.props;
 	    dispatch(fetchArticle(params.id));
 	    dispatch(fetchComments());

@@ -6,11 +6,6 @@ export default handleActions({
     FETCH_ARTICLES: (state, action) => {
         let payload = action.payload;
 
-        return Object.assign({}, state, {
-            [payload.timestamp]: {
-                isFecting: false,
-                articles: payload.articles
-            }
-        });
+        return {...state,isFecting:false,articles:payload.articles}
     }
 }, {});

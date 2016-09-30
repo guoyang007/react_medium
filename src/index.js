@@ -9,8 +9,8 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import store from './stores/index.js';
-
 import Layout from './components/layout.js';
+import Home  from './pages/homes/index.js';
 
 injectTapEventPlugin();
 
@@ -19,17 +19,9 @@ ReactDOM.render((
 	<Provider store={store()} >
 		<Router history={browserHistory}>
 			<Route path="/" component={Layout}>
-				<IndexRoute getComponent={(location, callback) => {
-			      require.ensure([], (require) => {
-			        callback(null, require('./pages/homes/index.js').default);
-			      },'home');
-			    }} />
+				<IndexRoute component={Home} />
 				
-				<Route path="/homes" getComponent={(location, callback) => {
-			      require.ensure([], (require) => {
-			        callback(null, require('./pages/homes/index.js').default);
-			      },'home');
-			    }} />
+				<Route path="/homes" component={Home} />
 				<Route path="/articles/:id" getComponent={(location, callback) => {
 			      require.ensure([], (require) => {
 			        callback(null, require('./pages/articles/show.js').default);

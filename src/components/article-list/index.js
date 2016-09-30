@@ -42,18 +42,20 @@ class ArticleList extends React.Component {
     }
 
     render() {
-        const { articlesList } = this.props;
+        const { articlesProp } = this.props;
+        const isFetchting=articlesProp.isFetchting;
+        const articlesList=articlesProp.articles;
         const articleNodes = [];
+
+        if (isFetchting) {articleNodes.push(<div>loading...</div>)}
         if(articlesList){
-            const articles=articlesList.articles;
-            articles.forEach(function(article, i){
+            articlesList.forEach(function(article, i){
                 if(article.genre == 1){
                     articleNodes.push(<GridArticle key={i} article={article} />);
                 }else{
                     articleNodes.push(<GridKeyArticle key={i} article={article} />);
                 }
             }); 
-
         }
     	return (
             <RefreshControl loadingFunction={this.loadingFunction.bind(this)}>
@@ -78,8 +80,9 @@ ArticleList.defaultProps = {};
 
 // 将全局的state映射到组件的props，相当于从store获取数据
 function mapStateToProps(state,ownParams){
+
     return{
-        articlesList:state.articles[20160829]
+        articlesProp:state.articles
     }
 }
 
