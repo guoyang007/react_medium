@@ -15,10 +15,11 @@ class CommentList extends React.Component {
     render() {
         const {commentList}=this.props;
         const comments=[];
-        commentList.forEach(function(comment,i){
-            comments.push(<Comment comment={comment} key={i}/>);
-        })
-
+        if (commentList) {
+            commentList.forEach(function(comment,i){
+                comments.push(<Comment comment={comment} key={i}/>);
+            })
+        }
         return (
 			<div className="com-comment-list">
 				{comments}

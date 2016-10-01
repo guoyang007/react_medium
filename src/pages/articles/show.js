@@ -71,7 +71,7 @@ function mapStateToProps(state,ownParams){
     // }
     return {
         article:article[ownParams.params.id],
-        comments:comments[ownParams.params.id]
+        comments:comments
     }
 }
 

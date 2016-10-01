@@ -13,10 +13,10 @@ class RelatedComments extends React.Component {
 
     render() {
         const { comments_prop } = this.props;
+        console.log(222,comments_prop);
         const comments=comments_prop.comments,
               count=comments_prop.count,
               commentsIsFetching=comments_prop.commentsIsFetching;
-
         return (
         	<div className="com-related-comments">
         		<div className="related-comments-hd">

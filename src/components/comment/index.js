@@ -10,33 +10,23 @@ let classNames=require('classnames');
 class Comment extends React.Component{
 	constructor(props){
 		super(props);
-		this.state={
-			praise:this.props.comment.praise,
-			praise_count:this.props.comment.praise_count
-		}
 	}
 	//点赞
 	clickHeart(e){
 
-		this.setState({
-			praise:!this.state.praise,
-			praise_count:this.state.praise?--this.state.praise_count:++this.state.praise_count
+		// this.setState({
+		// 	praise:!this.state.praise,
+		// 	praise_count:this.state.praise?--this.state.praise_count:++this.state.praise_count
+		// })
 
-		})
-		
-		// const {dispatch}=this.props
-		// console.log(dispatch)
-		// dispatch(markPraise({
-		// 	id:this.props.comment.id,
-		// 	praise:this.state.praise,
-		// 	praise_count:this.state.praise_count
-		// }))
+		console.log(1,this.props)
+		//this.props.dispatch(markPraise(this.props.comment.id,this.props.praise_count));
 	}
 	render(){
 			const {comment}=this.props;
 			let praiseClass=classNames({
 				'iconfont icon-praise':true,
-				'active':this.state.praise
+				'active':comment.praise
 			})
 			return(
 				<div className="com-comment clearfix">
@@ -51,7 +41,7 @@ class Comment extends React.Component{
 							<span className="date smart-date">{Utils.smartDate(comment.publish_time)}</span>
 							<div className="ribbon">
 								<span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
-								<span>{this.state.praise_count}</span>
+								<span>{comment.praise_count}</span>
 								<span className="iconfont icon-message">{comment.message_count}</span>
 							</div>
 						</div>

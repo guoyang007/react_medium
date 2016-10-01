@@ -15,7 +15,7 @@ class ArticleDetail extends React.Component {
 
     render() {
         let { article_prop } = this.props;
-        console.log(123,article_prop)
+        console.log(123,article_prop);
         const article=article_prop.article,isFetching=article_prop.isFetching;
         if (isFetching) {
             return(

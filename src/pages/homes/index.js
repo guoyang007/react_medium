@@ -7,7 +7,6 @@ require('./index.less');
 
 class HomesIndex extends React.Component {
     render() {
-    	console.log('home');
         return (
         	<div className="page-homes-index">
         		<ArticleList />

@@ -5,7 +5,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import store from './stores/index.js';
@@ -17,7 +17,7 @@ injectTapEventPlugin();
 // Render the main component into the dom
 ReactDOM.render((
 	<Provider store={store()} >
-		<Router history={browserHistory}>
+		<Router history={hashHistory}>
 			<Route path="/" component={Layout}>
 				<IndexRoute component={Home} />
 				
