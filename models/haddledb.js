@@ -12,7 +12,7 @@ var ArticlesSchema=new Schema({
 });
 var ArticlesModel=mongoose.model("Articles",ArticlesSchema);
 
-var ArticleSchema=new Schema({
+var DetailSchema=new Schema({
 	id:{type:Number},
 	title: {type:String},
 	detail_pic: {type:String},
@@ -23,10 +23,9 @@ var ArticleSchema=new Schema({
 	content: {type:String},
 	tags: {type:String}
 });
-var ArticleModel=mongoose.model("Article",ArticleSchema);
+var DetailModel=mongoose.model('Detail',DetailSchema);
 
-const CommentSchema=new Schema({
-	total_count:{type:Number},
+const RepliesSchema=new Schema({
 	author:{
 		id:{type:Number},
 		name:{type:String},
@@ -36,14 +35,27 @@ const CommentSchema=new Schema({
 	id:{type:Number},
 	praise_count:{type:Number},
 	praise:{type:Boolean},
-	message_count:{type:Number},
 	publish_time:{type:Date}
 });
-var CommentModel=mongoose.model('Comment',CommentSchema);
+var RepliesModel=mongoose.model('replies',RepliesSchema);
 const CommentsSchema=new Schema({
 	total_count:{type:Number},
-	comments:[CommentSchema]
+	articleId:{type:Number},
+	comments:[{
+		author:{
+			id:{type:Number},
+			name:{type:String},
+			avatar:{type:String}
+		},
+		content:{type:String},
+		id:{type:Number},
+		praise_count:{type:Number},
+		praise:{type:Boolean},
+		message_count:{type:Number},
+		publish_time:{type:Date},
+		child_comments:[RepliesSchema]
+	}]
 })
-var CommentsModel=mongoose.model("Comments",CommentsSchema);
+var CommentsModel=mongoose.model('Comments',CommentsSchema);
 
 

@@ -22,7 +22,7 @@ ReactDOM.render((
 				<IndexRoute component={Home} />
 				
 				<Route path="/homes" component={Home} />
-				<Route path="/articles/:id" getComponent={(location, callback) => {
+				<Route path="/article/:id" getComponent={(location, callback) => {
 			      require.ensure([], (require) => {
 			        callback(null, require('./pages/articles/show.js').default);
 			      },'show');

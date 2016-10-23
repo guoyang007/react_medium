@@ -56,7 +56,7 @@ class Reply extends React.Component {
                         <div className="ribbon">
                             <span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
                             <span>{this.state.praise_count}</span>
-                            <span className="iconfont icon-message">{reply.message_count}</span>
+                            <span className="iconfont icon-message"></span>
                         </div>
                     </div>
                     <p className="comment-text">{reply.content}</p>

@@ -12,7 +12,7 @@ class RelatedComments extends React.Component {
     }
 
     render() {
-        const { comments_prop } = this.props;
+        const { comments_prop,post } = this.props;
         console.log(222,comments_prop);
         const comments=comments_prop.comments,
               count=comments_prop.count,
@@ -23,7 +23,7 @@ class RelatedComments extends React.Component {
         			<span className="count">{count}条评论</span>
         		</div>
 
-        		<CommentList commentList={comments} />
+        		<CommentList commentList={comments} postR={post}/>
         	</div>
         );
     }

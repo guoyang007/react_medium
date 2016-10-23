@@ -11,7 +11,7 @@ class GridKeyArticle extends React.Component {
     	const { article } = this.props;
 
         return ( 
-        	<Link to="/articles/2" className="com-grid-key-article clearfix" >
+        	<Link to="/article/2" className="com-grid-key-article clearfix" >
 	           	<div className="grid-key-article-head imgcover">
 	           		<img src={article.banner_pic} />
 	           	</div>

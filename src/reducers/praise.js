@@ -1,38 +1,19 @@
-import {REQUEST_PRAISE,RECEIVE_PRAISE} from '../actions/index.js'
+import { handleActions } from 'redux-actions';
+import { POST_PRAISE } from '../actions/index.js';
 
-function praise(state = {
-    isFecting: false
-}, action) {
-    switch (action.type) {
-        case REQUEST_PRAISE:
-            return Object.assign({}, state, {
-                isFecting: true
-            });
-        case RECEIVE_PRAISE:
-            return Object.assign({}, state, {
-                isFecting: false,
-                praise: action.praise,
-                praise_count:action.praise_count
-            });
-        default:
-            return state;
+
+export default handleActions({
+    POST_PRAISE: (state, action) => {
+        let payload = action.payload;
+        let praiseCount,isPraise;
+        if (payload.praise) {
+            praiseCount=payload.praise_count-1;
+            isPraise=false;
+        }else{
+            praiseCount=payload.praise_count+1;
+            isPraise=true;
+        }
+
+        return {...state,isFecting:false,id:payload.id,praise_count:praiseCount,praise:isPraise}
     }
-}
-
-
-function praiseReducer(state = {
-
-}, action) {
-    switch (action.type) {
-        case REQUEST_PRAISE:
-        case RECEIVE_PRAISE:
-            return Object.assign({}, state, {
-                [action.commentId]: praise(state[action.commentId], action)
-            });
-        default:
-            return state;
-    }
-}
-
-
-export default praiseReducer;
+}, {});

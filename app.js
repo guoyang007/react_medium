@@ -1,11 +1,20 @@
 var express=require('express');
+var bodyParser = require('body-parser');
 
 var mongoose=require('mongoose');
-global.dbHandle=require('./models/haddledb.js');
+
 global.db=mongoose.connect('mongodb://localhost:27017/mediumReact');
+global.dbHandle=require('./models/haddledb.js');
 
 var routes=require('./routes/index');
 var app=express();
+//body-parser 解析json格式数据
+app.use(bodyParser.json({limit: '1mb'}));
+//此项必须在 bodyParser.json 下面,为参数编码
+app.use(bodyParser.urlencoded({           
+  extended: true
+}));
+
 
 //nodeJs模板语言，选用ejs，如下配置可正常使用.html文件作为入口
 app.engine('.html', require('ejs').__express);

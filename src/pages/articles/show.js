@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchArticle } from '../../actions/index.js';
 import { fetchComments } from '../../actions/index.js';
+import { postPraise } from '../../actions/praise.js';
 
 import ArticleDetail from '../../components/article-detail/index.js';
 import RelatedComments from '../../components/related-comments/index.js';
@@ -14,7 +15,7 @@ class ArticlesShow extends React.Component {
 	componentDidMount(){
 	    const { dispatch, params } = this.props;
 	    dispatch(fetchArticle(params.id));
-	    dispatch(fetchComments());
+	    dispatch(fetchComments(params.id));
 	}
     render() {
     	const {article,comments}=this.props;
@@ -25,7 +26,7 @@ class ArticlesShow extends React.Component {
            articleCom = <ArticleDetail article_prop={article}/>
         }
         if (comments) {
-           commentsCom= <RelatedComments comments_prop={comments}/>
+           commentsCom= <RelatedComments comments_prop={comments} post={postPraise()}/>
         }
        return (
             <div className="page-articles-show">
@@ -71,7 +72,7 @@ function mapStateToProps(state,ownParams){
     // }
     return {
         article:article[ownParams.params.id],
-        comments:comments
+        comments:comments[ownParams.params.id]
     }
 }
 

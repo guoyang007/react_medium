@@ -10,23 +10,55 @@ let classNames=require('classnames');
 class Comment extends React.Component{
 	constructor(props){
 		super(props);
+		this.state={
+			praise_count:props.comment.praise_count,
+			praise:props.comment.praise
+		}
 	}
 	//点赞
 	clickHeart(e){
+		const {comment}=this.props;
+		let praiseCount=this.state.praise_count,
+			isPraise;
+		let self=this;
+		if (this.state.praise) {
+			praiseCount-=1;
+			isPraise=false;
+		}else{
+			praiseCount+=1;
+			isPraise=true;
+		}
+		fetch('/post_praise', {
+		    method: 'POST',
+		    headers: {
+		        'Content-Type': 'application/json',
+		        'Accept': 'application/json',
+		        'Content-Type': 'application/json'
+		    },
+		    body: JSON.stringify({
+		    	articleId:1,
+		        id: comment.id, 
+		        praise_count: praiseCount, 
+		        praise: isPraise 
+		    })
+		})
+		.then(response=>{
+			if (response.status==200) {
+				response.json().then(function(json){
+					self.setState({
+						praise_count:json.praise_count,
+						praise:json.praise
+					})
+				})
+			}
+		})
 
-		// this.setState({
-		// 	praise:!this.state.praise,
-		// 	praise_count:this.state.praise?--this.state.praise_count:++this.state.praise_count
-		// })
-
-		console.log(1,this.props)
-		//this.props.dispatch(markPraise(this.props.comment.id,this.props.praise_count));
 	}
 	render(){
 			const {comment}=this.props;
 			let praiseClass=classNames({
 				'iconfont icon-praise':true,
-				'active':comment.praise
+				'active':this.state.praise
 			})
 			return(
 				<div className="com-comment clearfix">
@@ -41,7 +73,7 @@ class Comment extends React.Component{
 							<span className="date smart-date">{Utils.smartDate(comment.publish_time)}</span>
 							<div className="ribbon">
 								<span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
-								<span>{comment.praise_count}</span>
+								<span>{this.state.praise_count}</span>
 								<span className="iconfont icon-message">{comment.message_count}</span>
 							</div>
 						</div>

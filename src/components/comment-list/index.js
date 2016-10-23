@@ -13,11 +13,11 @@ class CommentList extends React.Component {
         super(props)
     }
     render() {
-        const {commentList}=this.props;
+        const {commentList,postR}=this.props;
         const comments=[];
         if (commentList) {
             commentList.forEach(function(comment,i){
-                comments.push(<Comment comment={comment} key={i}/>);
+                comments.push(<Comment comment={comment} key={i} postRequest={postR}/>);
             })
         }
         return (

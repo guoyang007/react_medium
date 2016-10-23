@@ -35,35 +35,35 @@ export * from './comments.js';
 // }
 
 //post praise
-export const REQUEST_PRAISE = 'REQUEST_PRAISE'
+// export const REQUEST_PRAISE = 'REQUEST_PRAISE'
 
-function requestPraise(commentId) {
-    return {
-        type: REQUEST_PRAISE,
-        commentId: commentId
-    }
-}
-export const RECEIVE_PRAISE = 'RECEIVE_PRAISE'
+// function requestPraise(commentId) {
+//     return {
+//         type: REQUEST_PRAISE,
+//         commentId: commentId
+//     }
+// }
+// export const RECEIVE_PRAISE = 'RECEIVE_PRAISE'
 
-function receivePraise(json) {
-    const { commentId, praise, praise_count } = json
-    return {
-        type: RECEIVE_PRAISE,
-        commentId: commentId,
-        praise: praise,
-        praise_count: praise_count
-    }
-}
-export function markPraise(options) {
-    const { commentId } = options
-    return dispatch => {
-        dispatch(requestPraise(commentId));
+// function receivePraise(json) {
+//     const { commentId, praise, praise_count } = json
+//     return {
+//         type: RECEIVE_PRAISE,
+//         commentId: commentId,
+//         praise: praise,
+//         praise_count: praise_count
+//     }
+// }
+// export function markPraise(options) {
+//     const { commentId } = options
+//     return dispatch => {
+//         dispatch(requestPraise(commentId));
 
-        return fetch(`/praise/${commentId}.json`, {
-                method: "POST",
-                body: JSON.stringify(options)
-            })
-            .then(response => response.json())
-            .then(json => dispatch(receivePraise(json)))
-    }
-}
+//         return fetch(`/praise/${commentId}.json`, {
+//                 method: "POST",
+//                 body: JSON.stringify(options)
+//             })
+//             .then(response => response.json())
+//             .then(json => dispatch(receivePraise(json)))
+//     }
+// }

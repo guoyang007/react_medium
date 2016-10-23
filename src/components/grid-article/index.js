@@ -11,7 +11,7 @@ class GridArticle extends React.Component {
     	const { article } = this.props;
 
         return ( 
-        	<Link to="/articles/1" className="com-grid-article clearfix" >
+        	<Link to="/article/1" className="com-grid-article clearfix" >
 	           	<div className="grid-article-left">
 	           		<h2>{article.title}</h2>
 	           		<div className="ribbon">
