@@ -24,7 +24,7 @@ app.set('view engine','html')
 
 var isDev = process.env.NODE_ENV !== 'production';
 
-if(isDev){
+if(true){
 	//require('core-js/fn/object/assign');
 
 	const webpack = require('webpack');
