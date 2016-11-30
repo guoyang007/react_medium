@@ -47,7 +47,7 @@ router.get('/comments/:id',function(req,res){
 router.post('/post_praise',function(req,res){
 	console.log(112233,req.body);
 	var data=req.body;
-	
+	//可以看出数据结构很直观的会影响到数据的查找，这儿的update就稍微复杂了些
 	comments.update({'articleId':1,'comments.id':data.id},
 		{'comments.$.praise_count':data.praise_count,
 				'comments.$.praise':data.praise},
@@ -59,10 +59,8 @@ router.post('/post_praise',function(req,res){
 			res.send({
 				praise_count:data.praise_count,
 				praise:data.praise
-			});
-		
+			});	
 	})
-	
 })
 
 

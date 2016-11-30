@@ -1,0 +1,72 @@
+@import '../common/variables.less';
+.com-comment-popup{
+	display: block;
+	width: 100%;
+	height: 100%;
+	transition:transform 0.5s ease-out;
+	&.hide{
+		transform:translate3d(0,100%,0);
+	}
+	.comment-popup-hd {
+	    position: relative;
+	    text-align: center;
+	    height: 44px;
+	    line-height: 44px;
+	    background-color: #262626;
+	    font-size: 17px;
+	    .left {
+	        position: absolute;
+	        top: 0;
+	        width: 44px;
+	        text-align: left;
+	        .left(20);
+	    }
+	    .right {
+	        position: absolute;
+	        top: 0;
+	        width: 44px;
+	        text-align: right;
+	        .right(20);
+	    }
+	    .left a,
+	    .center {
+	        color: #ffffff;
+	    }
+	    .right a {
+	        color: #ffc81f;
+	    }
+	    .left a,
+	    .right a {
+	        display: inline-block;
+	    }
+	}
+	.comment-popup-bd {
+	    height: 100%;
+	    form {
+	        height: 100%;
+	        textarea {
+	            .font-size(28);
+	            width: 100%;
+	            height: 100%;
+	            border: none;
+	            resize: none;
+	            .padding(30);
+	        }
+	    }
+	}
+}
+.overlay{
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 999;
+	background-color: rgba(0,0,0,0.5);
+	transition-duration:0.4s;
+	visibility: hidden;
+    opacity: 0;
+}
+.overlay-visible{
+	visibility: visible;
+	opacity: 1;
+}

@@ -8,15 +8,42 @@ import { postPraise } from '../../actions/praise.js';
 
 import ArticleDetail from '../../components/article-detail/index.js';
 import RelatedComments from '../../components/related-comments/index.js';
+import CommentPopup from '../../components/comment-popup/index.js';
+import eventProxy from '../../components/common/eventProxy.js';
 
 require('./show.less');
 
 class ArticlesShow extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            open:false
+        }
+    }
+
 	componentDidMount(){
 	    const { dispatch, params } = this.props;
 	    dispatch(fetchArticle(params.id));
 	    dispatch(fetchComments(params.id));
+        eventProxy.on('Comment::Popup',(msg)=>{
+            console.log(999,msg);
+            this.show();
+        })
+        eventProxy.on('Comment::Hide',(msg)=>{
+            console.log(888,msg);
+            this.close();
+        })
 	}
+    show(){
+        this.setState({
+            open:true
+        })
+    }
+    close(){
+        this.setState({
+            open:false
+        })
+    }
     render() {
     	const {article,comments}=this.props;
         let  articleCom;
@@ -32,8 +59,9 @@ class ArticlesShow extends React.Component {
             <div className="page-articles-show">
                 {articleCom}
                 {commentsCom}
+                <CommentPopup open={this.state.open}/>
             </div>
-        );        
+        )       
     }
 }
 

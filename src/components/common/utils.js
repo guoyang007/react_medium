@@ -30,6 +30,20 @@ const Utils={
 		    return(originDate.getMonth() + 1 + ' 月 ' + originDate.getDate() + ' 日');
 		}
 
+	},
+	addClass(obj,cls){
+		if(!obj.className.match(new RegExp('(^|\\s)'+cls+'(\\s|$)'))){
+			obj.className+=' '+cls;
+		}
+	},
+	hasClass(obj,cls){
+		return obj.className.match(new RegExp('(^|\\s)'+cls+'(\\s|$)'));
+	},
+	removeClass(obj,cls){
+		let oClass=new RegExp('(^|\\s)'+cls+'(\\s|$)');
+		if(obj.className.match(new RegExp('(^|\\s)'+cls+'(\\s|$)'))){
+			obj.className=obj.className.replace(oClass,'');
+		}
 	}
 };
 export default Utils;

@@ -15,7 +15,7 @@ let config = Object.assign({}, baseConfig, {
   devtool: 'sourcemap',
   plugins: [
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.optimize.CommonsChunkPlugin('common.js',Infinity),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     }),

@@ -5,6 +5,9 @@ import ReplyList from '../reply-list/index.js';
 import Utils from '../common/utils.js';
 import {markPraise} from '../../actions/index.js';
 require('./index.less');
+
+import eventProxy from '../common/eventProxy.js';
+
 let classNames=require('classnames');
 
 class Comment extends React.Component{
@@ -16,7 +19,7 @@ class Comment extends React.Component{
 		}
 	}
 	//点赞
-	clickHeart(e){
+	clickHeart(){
 		const {comment}=this.props;
 		let praiseCount=this.state.praise_count,
 			isPraise;
@@ -54,6 +57,10 @@ class Comment extends React.Component{
 		})
 
 	}
+	clickMessage(){
+		eventProxy.trigger('Comment::Popup','to show');
+	}
+
 	render(){
 			const {comment}=this.props;
 			let praiseClass=classNames({
@@ -74,7 +81,7 @@ class Comment extends React.Component{
 							<div className="ribbon">
 								<span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
 								<span>{this.state.praise_count}</span>
-								<span className="iconfont icon-message">{comment.message_count}</span>
+								<span className="iconfont icon-message" onClick={this.clickMessage.bind(this)}>{comment.message_count}</span>
 							</div>
 						</div>
 						<p className="comment-text">{comment.content}</p>

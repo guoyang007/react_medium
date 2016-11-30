@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Utils from '../common/utils.js';
+import eventProxy from '../common/eventProxy.js';
 
 require('./index.less');
 let classNames=require('classnames');
@@ -34,6 +35,9 @@ class Reply extends React.Component {
         //  praise_count:this.state.praise_count
         // }))
     }
+    clickMessage(){
+        eventProxy.trigger('Comment::Popup','to show');
+    }
 
     render() {
         const {reply}=this.props;
@@ -56,7 +60,7 @@ class Reply extends React.Component {
                         <div className="ribbon">
                             <span className={praiseClass} onClick={this.clickHeart.bind(this)}></span>
                             <span>{this.state.praise_count}</span>
-                            <span className="iconfont icon-message"></span>
+                            <span className="iconfont icon-message" onClick={this.clickMessage.bind(this)}></span>
                         </div>
                     </div>
                     <p className="comment-text">{reply.content}</p>
