@@ -17,7 +17,30 @@ class CommentPopup extends React.Component{
 		eventProxy.trigger('Comment::Hide','hide');
 	}
 	publishComment(){
-
+		let self=this;
+		//对数据库的存储应该新建一个表，对于praise_count等有默认值，这儿就提交几条有信息的条目即可
+		fetch('/post_comment', {
+		    method: 'POST',
+		    headers: {
+		        'Content-Type': 'application/json',
+		        'Accept': 'application/json',
+		        'Content-Type': 'application/json'
+		    },
+		    body: JSON.stringify({
+		    	articleId:1,
+		        id: 231,
+		        content:"what the fuck"
+		    })
+		})
+		.then(response=>{
+			console.log(1231,response);
+			if (response.status==200) {
+				//触发更新RelatedComments部分
+				//self.setState({})
+				//弹窗消失
+				this.cancelComment();
+			}
+		})
 	}
 	componentWillReceiveProps(nextProps){
 		if (nextProps.open&&!this.props.open) {
@@ -34,7 +57,7 @@ class CommentPopup extends React.Component{
 							<div className="comment-popup-hd">
 								<div className="left"><a href="javascript:void(0)" className="link close-popup" onClick={this.cancelComment.bind(this)}>取消</a></div>
 								<div className="center">我有意见</div>
-								<div className="right"><a href="#" className="link submit">发布</a></div>
+								<div className="right"><a href="javascript:void(0)" className="link submit" onClick={this.publishComment.bind(this)}>发布</a></div>
 							</div>
 							<div className="comment-popup-bd">
 								<form action="/post_comment" method="post">

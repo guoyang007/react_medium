@@ -19,6 +19,7 @@ class Reply extends React.Component {
     }
 
     clickHeart(){
+        //还只是假性改变，应该将comment组件中的提交抽离出action，在这儿也要用。
         console.log(this.state.praise);
         console.log(this.state.praise_count);
         this.setState({

@@ -11,6 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import store from './stores/index.js';
 import Layout from './components/layout.js';
 import Home  from './pages/homes/index.js';
+import LoginIndex from './pages/login/login.js';
 
 injectTapEventPlugin();
 
@@ -20,7 +21,7 @@ ReactDOM.render((
 		<Router history={hashHistory}>
 			<Route path="/" component={Layout}>
 				<IndexRoute component={Home} />
-				
+				<Route path="/signup" component={LoginIndex} />
 				<Route path="/homes" component={Home} />
 				<Route path="/article/:id" getComponent={(location, callback) => {
 			      require.ensure([], (require) => {

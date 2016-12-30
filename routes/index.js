@@ -4,6 +4,7 @@ var mongoose=require('mongoose');
 var articles=db.model('Articles');
 var detail=db.model('Detail');
 var comments=db.model('Comments');
+var users=db.model('Users');
 
 /*
 get home page
@@ -61,6 +62,46 @@ router.post('/post_praise',function(req,res){
 				praise:data.praise
 			});	
 	})
+});
+router.post('/post_comment',function(req,res){
+	var data=req.body;
+	console.log(111,data);
+	// if (data.isReplyComment) {
+	// 	层级好深，不太会找，子评论部分后边再添加
+	// }
+	//给主comment增加一条记录
+	comments.update({'articleId':1},{$push:{'comments':{
+				'author' : {
+		           'id' : 242,
+		           'name' : 'new',
+		           'avatar' : 'http://www.qdaily.com/images/missing_face.png'
+		        },
+			    'praise_count' : 5,
+			    'praise' : true,
+			    'publish_time' : '2016-08-18 14:28:36 +0800',
+			    'content' : 'what the fuck.',
+			    'id' : 12
+			}}}, {upsert:true},function(err,results){
+				if (err) {
+					console.log(err)
+				}
+				console.log("succeed");
+				res.json(results);
+			})
+})
+
+//signup
+router.post('/users/signup',function(req,res){
+	var data=req.body;
+	console.log("signup",data)
+	var user = new users(data.user)
+	user.save(function(err){
+		if (err) {
+			console.log(err);
+		}else{
+			res.redirect('/');
+		}
+	});
 })
 
 

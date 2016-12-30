@@ -1,0 +1,114 @@
+@import '../../components/common/variables.less';
+.page-login{
+    height: 500px;
+    padding:100px 25px;
+
+}
+form {
+    display: none;
+    .small-title {
+        position: relative;
+        text-align: center;
+        color: #b3b3b3;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 1px;
+            background-color: #cccccc;
+            width: 100%;
+        }
+        span {
+            background-color: #ffffff;
+            position: relative;
+            padding: 0 10px;
+        }
+    }
+    .social-login {
+        font-size: 0;
+        text-align: center;
+        .padding(32, 0);
+        .social {
+            display: inline-block;
+            .width(80);
+            .height(80);
+            .line-height(80);
+            border-radius: 50%;
+            overflow: hidden;
+            .margin-left(40);
+            &.iconfont {
+                color: #ffffff;
+                .font-size(40);
+            }
+            &.icon-weibo {
+                background-color: #f3543f;
+            }
+            &.icon-qq {
+                background-color: #198ef2;
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+    .form-control {
+        .margin-top(20);
+        input {
+            width: 100%;
+            .font-size(28);
+            .padding(20, 28);
+            border: 1px solid #e5e5e5;
+            border-radius: 0;
+        }
+        input[type="radio"] {
+            display: inline-block;
+            width: auto;
+        }
+        a {
+            .font-size(24);
+            color: #b3b3b3;
+            border-bottom: 1px solid #d6d6d6;
+        }
+        &:first-child {
+            .margin-top(0);
+        }
+    }
+    .form-action {
+        .margin-top(40);
+        .font-size(24);
+        .btn {
+            padding: 0;
+            display: block;
+            text-align: center;
+            width: 100%;
+            .font-size(34);
+            .height(90);
+            .line-height(90);
+            color: #ffffff;
+            background-color: #ffc81f;
+            &.cancel {
+                .margin-top(20);
+                background-color: #ffffff;
+                border: 1px solid #eaeaea;
+                color: #808080;
+            }
+        }
+    }
+    .form-links {
+        .font-size(24);
+        line-height: 44px;
+        a {
+            color: #808080;
+            &:first-child {
+                float: left;
+            }
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+    &.active {
+        display: block;
+    }
+}
