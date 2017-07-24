@@ -1,11 +1,66 @@
-@import '../../components/common/variables.less';
-.page-login{
-    height: 500px;
-    padding:100px 25px;
-
+@import '../common/variables.less';
+.com-login-form {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(250, 250, 250, 1);
 }
-.page-login form {
+
+.favicon {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    .icon {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 36px;
+        color:#ffc81f;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .favtext{
+        margin-top: 10px;
+        line-height: 28px;
+        font-size: 14px;
+        text-shadow: 0 0 0.2em #ffc81f;
+    }
+}
+.login-form{
+    width: 100%;
+    padding: 50px 25px;
+    .ant-form-item{
+        font-size: 12px;
+        margin-bottom: 24px;
+
+        .ant-form-item-control{
+            line-height: 30px;
+            input{
+                width: 100%;
+                .font-size(28);
+                .padding(20, 28);
+                border: 1px solid #e5e5e5;
+                border-radius: 6px;
+            }
+            .login-form-button{
+                width: 100%;
+                background-color: #ffc81f;
+                color: #fff;
+                border: 1px solid #e5e5e5;
+                .font-size(28);
+                .padding(20, 28);
+            }
+        }
+
+    }
+}
+
+
+.form {
     display: none;
+    padding: 50px 25px;
     .small-title {
         position: relative;
         text-align: center;
@@ -25,33 +80,6 @@
             padding: 0 10px;
         }
     }
-    .social-login {
-        font-size: 0;
-        text-align: center;
-        .padding(32, 0);
-        .social {
-            display: inline-block;
-            .width(80);
-            .height(80);
-            .line-height(80);
-            border-radius: 50%;
-            overflow: hidden;
-            .margin-left(40);
-            &.iconfont {
-                color: #ffffff;
-                .font-size(40);
-            }
-            &.icon-weibo {
-                background-color: #f3543f;
-            }
-            &.icon-qq {
-                background-color: #198ef2;
-            }
-            &:first-child {
-                margin-left: 0;
-            }
-        }
-    }
     .form-control {
         .margin-top(20);
         input {
@@ -59,11 +87,17 @@
             .font-size(28);
             .padding(20, 28);
             border: 1px solid #e5e5e5;
-            border-radius: 0;
+            border-radius: 6px;
+        }
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 300px white inset;
         }
         input[type="radio"] {
             display: inline-block;
             width: auto;
+        }
+        input[type="submit"] {
+            background-color: #ffc81f;
         }
         a {
             .font-size(24);

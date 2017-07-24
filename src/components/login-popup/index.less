@@ -1,0 +1,26 @@
+@import '../common/variables.less';
+.com-login-popup{
+	display: block;
+	width: 100%;
+	height: 100%;
+	transition:transform 0.5s ease-out;
+	&.hide{
+		transform:translate3d(0,100%,0);
+	}
+
+}
+.overlay{
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 999;
+	background-color: rgba(0,0,0,0.5);
+	transition-duration:0.4s;
+	visibility: hidden;
+    opacity: 0;
+}
+.overlay-visible{
+	visibility: visible;
+	opacity: 1;
+}

@@ -58,10 +58,4 @@ const CommentsSchema=new Schema({
 })
 var CommentsModel=mongoose.model('Comments',CommentsSchema);
 
-var UsersSchema=new Schema({
-	user_name:{type:String},
-	user_password:{type:String}
-});
-var UsersModel=mongoose.model("Users",UsersSchema);
-
 

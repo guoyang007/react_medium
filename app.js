@@ -2,14 +2,15 @@ var express=require('express');
 var bodyParser = require('body-parser');
 
 var mongoose=require('mongoose');
-
+mongoose.Promise = global.Promise;
 global.db=mongoose.connect('mongodb://localhost:27017/mediumReact');
 global.dbHandle=require('./models/haddledb.js');
+global.user=require('./models/user.js');
 
 var routes=require('./routes/index');
 var app=express();
 //body-parser 解析json格式数据
-app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.json());
 //此项必须在 bodyParser.json 下面,为参数编码
 app.use(bodyParser.urlencoded({           
   extended: true

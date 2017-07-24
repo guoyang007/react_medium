@@ -69,7 +69,9 @@
     "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
+    "antd": "^2.11.1",
     "antd-mobile": "^0.7.8",
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
     "core-js": "^2.0.0",
     "ejs": "^2.5.2",
@@ -88,6 +90,7 @@
     "react-dom": "^15.0.0",
     "react-mdl": "^1.6.1",
     "react-redux": "^4.4.5",
+    "react-redux-form": "^1.8.2",
     "react-refetch": "^1.0.0-beta.8",
     "react-router": "^2.6.1",
     "react-router-redux": "^4.0.5",

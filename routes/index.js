@@ -5,6 +5,7 @@ var articles=db.model('Articles');
 var detail=db.model('Detail');
 var comments=db.model('Comments');
 var users=db.model('Users');
+var bcrypt=require('bcrypt');
 
 /*
 get home page
@@ -94,15 +95,49 @@ router.post('/post_comment',function(req,res){
 router.post('/users/signup',function(req,res){
 	var data=req.body;
 	console.log("signup",data)
-	var user = new users(data.user)
-	user.save(function(err){
+	
+	users.find({name:data.name},function(err,result){
 		if (err) {
-			console.log(err);
-		}else{
-			res.redirect('/');
+			console.log(err)
 		}
-	});
+		if (result.length) {
+			console.log('该用户名已注册')
+		}else{
+			var user = new users(data)
+			user.save(function(err){
+				if (err) {
+					console.log(err);
+				}else{
+					console.log('save ok')
+				}
+			});
+		}
+	})
+	
 })
-
+router.post('/users/signIn',function(req,res){
+	var data=req.body;
+	users.findOne({name:data.name},function(err,result){
+		if (err) {
+            console.log(err);
+        }
+        if (!result) {
+            console.log('登录失败，用户名不存在！');
+            return
+        }
+        bcrypt.compare(data.password,result.password,function(err,isMatch){
+        	 if (err) {
+                console.log(err);
+            }
+            if (isMatch) {
+            	console.log('登录成功！');
+            	return res.redirect('/');
+            }else{
+            	console.log('登录失败')
+            	return 
+            }
+        })
+	})
+})
 
 module.exports=router;
