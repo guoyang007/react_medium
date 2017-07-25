@@ -102,6 +102,7 @@ router.post('/users/signup',function(req,res){
 		}
 		if (result.length) {
 			console.log('该用户名已注册')
+			res.send({status:'error',data:'该用户名已注册'})
 		}else{
 			var user = new users(data)
 			user.save(function(err){
@@ -111,6 +112,10 @@ router.post('/users/signup',function(req,res){
 					console.log('save ok')
 				}
 			});
+			res.send({
+				status:'ok',
+				data:'已经注册成功'
+			})
 		}
 	})
 	

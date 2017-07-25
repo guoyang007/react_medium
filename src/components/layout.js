@@ -52,7 +52,7 @@ class Layout extends React.Component {
     }
 
     loginShow(){
-        if (this.state.userName) {
+        if (this.state.userName != 'Login') {
             return
         }
     	this.setState({loginPop:true})

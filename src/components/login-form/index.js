@@ -14,6 +14,8 @@ class LoginForm extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={
+			signIn:true,
+			confirmDirty:false,
 			name:'',
 			password:'',
 			repassword:''
@@ -44,49 +46,53 @@ class LoginForm extends React.Component{
 	   });
 	}
 
-	changeFormToRegister(e){
-		e.preventDefault();
-		let element=document.getElementsByClassName('overlay')[0];
-		Utils.removeClass(element.getElementsByClassName('login active')[0],'active');
-		Utils.addClass(element.getElementsByClassName('register')[0],'active');
-	}
-	register(e){
-		e.preventDefault();
-
-		if (this.state.password===this.state.repassword) {
-			console.log('ok');
-			let name=this.state.name,
-				password=this.state.password
-			//触发提交信息的action
-			fetch('/users/signup',{
-				method:"POST",
-				headers: {
-				    'Accept': 'application/json',
-				    'Content-Type': 'application/x-www-form-urlencoded'
-				 },
-				body:JSON.stringify({
-					name:name,
-					password:password
-				})
-			})
-			.then(response=>{
-				if(response.status==200){
-					let result = response.json()
-					console.log(1111,result)
-				}
-			})
-		}else{
-			console.log(' 密码不匹配 ')
-		}
-	}
-
-	handleChange(event){
-
+	changeFormToRegister=()=>{
 		this.setState({
-			[event.target.name]:event.target.value
+			signIn:false
 		})
 	}
+	changeFormToLogin=()=>{
+		this.setState({
+			signIn:true
+		})
+	}
+	register=(e)=>{
+		e.preventDefault();
+	    this.props.form.validateFieldsAndScroll((err, values) => {
+	      if (!err) {
+	        console.log('Received values of form: ', values);
+	        fetch('/users/signup',{
+				method:'POST',
+				headers:{
+					'Accept':'application/json',
+					'Content-Type': 'application/json'
+				},
+				body:JSON.stringify(values)
+			}).then(response=>{
+				if (response.status==200) {
+					this.closeLoginPopup(values.name);
+					console.log(123,response.json())
+				}
+			}).catch(err=>{
+				console.error(err);
+				this.closeLoginPopup();
+			})
+	      }
+	    });
+	}
 
+	handleConfirmBlur = (e) => {
+	    const value = e.target.value;
+	    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+	  }
+	checkPassword = (rule, value, callback) => {
+	    const form = this.props.form;
+	    if (value && value !== form.getFieldValue('password')) {
+	      callback('Two passwords that you enter is inconsistent!');
+	    } else {
+	      callback();
+	    }
+	  }
 	// inputBlur(){
 	// 	if (this.state.password===this.state.repassword) {
 	// 		console.log('ok');
@@ -98,41 +104,77 @@ class LoginForm extends React.Component{
 	closeLoginPopup=(name)=>{
 		eventProxy.trigger('Login::Close',{name:name});
 	}
-
-
-	render(){
+	renderSignIn=()=>{
 		const { getFieldDecorator } = this.props.form;
+		return (
+			<Form onSubmit={this.handleSubmit} className="login-form">
+				<FormItem>
+		          {getFieldDecorator('name', {
+		            rules: [{ required: true, message: 'Please input your userName!' }],
+		          })(
+		            <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
+		          )}
+		        </FormItem>
+		        <FormItem>
+	              {getFieldDecorator('password', {
+	                rules: [{ required: true, message: 'Please input your Password!' }],
+	              })(
+	                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
+	              )}
+	            </FormItem>
+	            <FormItem>
+	              <Button type="primary" htmlType="submit" className="login-form-button">
+	                Log in
+	              </Button>
+	              Or <a href="#" onClick={this.changeFormToRegister}>register now!</a>
+	            </FormItem>
+			</Form>	
+		)
+	}
+	renderSignUp=()=>{
+		const { getFieldDecorator } = this.props.form;
+		return (
+			<Form onSubmit={this.register} className="login-form">
+				<FormItem>
+		          {getFieldDecorator('name', {
+		            rules: [{ required: true, message: 'Please input your userName!' }],
+		          })(
+		            <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
+		          )}
+		        </FormItem>
+    	        <FormItem>
+                  {getFieldDecorator('password', {
+                    rules: [{ required: true, message: 'Please input your Password!' }],
+                  })(
+                    <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
+                  )}
+                </FormItem>
+    	        <FormItem>
+                  {getFieldDecorator('confirm', {
+                    rules: [{ required: true, message: 'Please confirm your Password!' },
+                    {validator:this.checkPassword}],
+                  })(
+                    <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" onBlur={this.handleConfirmBlur}/>
+                  )}
+                </FormItem>
+                <FormItem>
+                  <Button type="primary" htmlType="submit" className="login-form-button">
+                    Sign up
+                  </Button>
+                   <a href="#" onClick={this.changeFormToLogin}>已有账号，直接登录</a>
+                </FormItem>
+			</Form>
+		)
+	}
+	render(){
 		return (
 			<div className="com-login-form">
 				<div className="favicon">
-                    <p className="icon">M</p>
-                    <p className="favtext">给你想要的</p>
-                </div>
-				<Form onSubmit={this.handleSubmit} className="login-form">
-					<FormItem>
-			          {getFieldDecorator('name', {
-			            rules: [{ required: true, message: 'Please input your username!' }],
-			          })(
-			            <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
-			          )}
-			        </FormItem>
-			        <FormItem>
-	                  {getFieldDecorator('password', {
-	                    rules: [{ required: true, message: 'Please input your Password!' }],
-	                  })(
-	                    <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
-	                  )}
-	                </FormItem>
-	                <FormItem>
-                      
-                      <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
-                      </Button>
-                      Or <a href="">register now!</a>
-                    </FormItem>
-				</Form>
-				
-			</div>
+	                <p className="icon">M</p>
+	                <p className="favtext">给你想要的</p>
+	            </div>
+	            {this.state.signIn?this.renderSignIn():this.renderSignUp()}
+	        </div>
 		)
 	}
 }
