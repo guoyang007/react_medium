@@ -5,6 +5,8 @@ to do list
 * 完善登录注册
 	
 	* cookie/session
+  
+* 解决 webpack-dev-middleware 带来的跨域问题
 
 * 完善用户系统
 
