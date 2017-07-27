@@ -5,6 +5,7 @@ to do list
 * 完善登录注册
 	
 	* cookie/session
+  * 增加loginOut 入口，以及退出账号时清理session
   
 * 解决 webpack-dev-middleware 带来的跨域问题
 
