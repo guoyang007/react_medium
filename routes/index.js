@@ -129,8 +129,9 @@ router.post('/users/signup', function(req, res) {
 
 })
 router.post('/users/signIn', function(req, res) {
+
     var data = req.body;
-    console.log(111,data)
+
     users.findOne({ name: data.name }, function(err, result) {
         if (err) {
             console.log(err);
@@ -151,7 +152,8 @@ router.post('/users/signIn', function(req, res) {
             }
             if (isMatch) {
                 console.log('登录成功！');
-                res.send({
+                req.session.user = result
+                return res.send({
                     status:'ok',
                     msg:'login succuess',
                     data:{
@@ -160,7 +162,7 @@ router.post('/users/signIn', function(req, res) {
                 })
             } else {
                 console.log('登录失败')
-                res.send({
+                return res.send({
                     status:'error',
                     msg:'login failed'
                 })
