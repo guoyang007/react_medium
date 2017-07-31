@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 
 var mongoose=require('mongoose');
 mongoose.Promise = global.Promise;
-global.db=mongoose.connect('mongodb://localhost:27017/mediumReact');
+global.db=mongoose.connect('mongodb://localhost:27017/mediumReact',{ useMongoClient: true });
 global.dbHandle=require('./models/haddledb.js');
 global.user=require('./models/user.js');
 

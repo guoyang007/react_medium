@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Loader from 'halogen/BounceLoader';
+import Loader from 'halogenium/BounceLoader';
 
 require('./index.less');
 
