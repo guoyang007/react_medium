@@ -23,9 +23,13 @@
 </head>
 <body>
   <div class="react-container"></div>
-  
   <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
+  <%if(process.env.NODE_ENV=='production'){%>
+  <script type="text/javascript" src="dist/assets/common.js"></script>
+  <script type="text/javascript" src="dist/assets/app.js"></script>
+  <%}else{%>
   <script type="text/javascript" src="http://localhost:3000/react_medium/dist/assets/common.js"></script>
-  <script type="text/javascript" src="http://localhost:3000/react_medium/dist/assets/app.js"></script>p
+  <script type="text/javascript" src="http://localhost:3000/react_medium/dist/assets/app.js"></script>
+  <%}%>
 </body>
 </html>

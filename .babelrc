@@ -3,5 +3,13 @@
     "es2015",
     "stage-0",
     "react"
-  ]
+  ],
+  "plugins": [["import", {
+ 	 "libraryName": "antd",
+ 	 "style": true
+	},{
+	  "libraryName": "material-ui",
+	  "libraryDirectory": "components",  // default: lib
+	  "camel2DashComponentName": false,  // default: true
+	}]]
 }
